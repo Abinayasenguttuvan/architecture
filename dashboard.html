@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Architecture Dashboard</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --text-light: #222222;
+      --bg-dark: #1e1e1e;
+      --text-dark: #f4f4f4;
+      --primary: #d4af37; /* Gold */
+      --accent: #f5d76e;  /* Yellow */
+    }
+
+    body{
+      margin:0;
+      font-family:'Helvetica Neue',sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s;
+    }
+
+    body.dark{
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 30px;
+      background-color: var(--primary);
+      color:#fff;
+    }
+
+    header h1{ font-size:1.8rem; font-weight:bold; }
+    .theme-switch{
+      cursor:pointer;
+      padding:8px 15px;
+      background-color:#fff;
+      color: var(--primary);
+      border-radius:5px;
+      font-weight:bold;
+    }
+
+    .dashboard, .extra-section{
+      max-width:1200px;
+      margin:20px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      grid-gap:20px;
+    }
+
+    .card{
+      position:relative;
+      background-color:#fff;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      padding:20px;
+      overflow:hidden;
+      opacity:0;
+      transform:translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    body.dark .card{
+      background-color:#2c2c2c;
+      box-shadow:0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .card.visible{opacity:1;transform:translateY(0);}
+
+    /* Hover overlay */
+    .card:hover::before{
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(212,175,55,0.15);
+      border-radius:10px;
+      pointer-events:none;
+      transition: all 0.3s;
+    }
+
+    /* KPI */
+    .kpi{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      font-size:2rem;
+      font-weight:bold;
+      color: var(--primary);
+    }
+    .kpi span{ font-size:1rem; font-weight:normal; margin-top:5px; color:var(--accent); }
+
+    /* Map */
+    #map{width:100%;height:400px;border-radius:10px;}
+
+    /* Charts */
+    .chart-container{position:relative;width:100%;height:400px;}
+
+    /* Extra Sections */
+    .extra-section img{
+      width:100%;
+      border-radius:10px;
+      object-fit:cover;
+      margin-bottom:10px;
+      opacity:0;
+      transform:scale(0.9);
+      transition: all 0.6s ease;
+    }
+    .extra-section h2, .extra-section p{
+      opacity:0;
+      transform:translateY(30px);
+      transition:all 0.6s ease;
+    }
+
+    @media(max-width:768px){
+      .dashboard,.extra-section{grid-template-columns:1fr;}
+      #map,.chart-container{height:300px;}
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Golden Architecture Dashboard</h1>
+    <div class="theme-switch" id="themeSwitch">Dark Mode</div>
+  </header>
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+    <div class="card kpi-card"><div class="kpi" id="projectsCount">0<span>Projects Completed</span></div></div>
+    <div class="card kpi-card"><div class="kpi" id="clientsCount">0<span>Happy Clients</span></div></div>
+    <div class="card kpi-card"><div class="kpi" id="awardsCount">0<span>Awards Won</span></div></div>
+
+    <div class="card">
+      <h2>Project Locations</h2>
+      <div id="map"></div>
+    </div>
+
+    <div class="card">
+      <h2>Projects by Type</h2>
+      <div class="chart-container"><canvas id="projectsChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Monthly Project Growth</h2>
+      <div class="chart-container"><canvas id="growthChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Extra Sections -->
+  <section class="extra-section">
+    <div class="card">
+      <h2>Featured Projects</h2>
+      <img src="./archi1.webp" alt="project1">
+      <img src="./archi2.webp" alt="project2">
+      <p>Portfolio includes residential, commercial, and public projects worldwide.</p>
+    </div>
+
+    <div class="card">
+      <h2>Awards & Recognition</h2>
+      <img src="./partner1.webp" alt="award1">
+      <p>Winner of international architecture and design awards for innovative projects.</p>
+    </div>
+
+    <div class="card">
+      <h2>Our Team</h2>
+      <img src="https://images.unsplash.com/photo-1581091215366-2f5b887f5110?auto=format&fit=crop&w=800&q=80" alt="team1">
+      <p>Meet our passionate architects, designers, and planners who bring ideas to life.</p>
+    </div>
+
+    <div class="card">
+      <h2>Sustainability</h2>
+      <img src="https://images.unsplash.com/photo-1505842465776-3b2a0f51b1d0?auto=format&fit=crop&w=1200&q=80" alt="sustainability">
+      <p>Eco-friendly materials and energy-efficient designs integrated into all projects.</p>
+    </div>
+
+    <div class="card">
+      <h2>Latest Updates</h2>
+      <img src="https://images.unsplash.com/photo-1529421303461-ec229c94397e?auto=format&fit=crop&w=1200&q=80" alt="news">
+      <p>Stay updated on latest projects, industry news, and design trends.</p>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // === Theme Switch ===
+    const themeSwitch = document.getElementById('themeSwitch');
+    themeSwitch.addEventListener('click', ()=>{
+      document.body.classList.toggle('dark');
+      themeSwitch.textContent = document.body.classList.contains('dark')?'Light Mode':'Dark Mode';
+    });
+
+    // === KPI Animation ===
+    function animateValue(id,start,end,duration){
+      let obj=document.getElementById(id);
+      let range=end-start;
+      let current=start;
+      let increment=end>start?1:-1;
+      let stepTime=Math.abs(Math.floor(duration/range));
+      let timer=setInterval(()=>{
+        current+=increment;
+        obj.textContent=current;
+        if(current==end) clearInterval(timer);
+      },stepTime);
+    }
+    animateValue("projectsCount",0,120,2000);
+    animateValue("clientsCount",0,85,2000);
+    animateValue("awardsCount",0,15,2000);
+
+    // === Leaflet Map with Animated Markers ===
+    const map=L.map('map').setView([20.5937,78.9629],5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+    const locations=[
+      {name:"Project A",coords:[28.6139,77.2090]},
+      {name:"Project B",coords:[19.0760,72.8777]},
+      {name:"Project C",coords:[13.0827,80.2707]},
+      {name:"Project D",coords:[22.5726,88.3639]}
+    ];
+    locations.forEach((loc,i)=>{
+      setTimeout(()=>{ L.marker(loc.coords,{icon:L.icon({iconUrl:'https://upload.wikimedia.org/wikipedia/commons/1/15/Gold_star_icon.svg',iconSize:[25,25]}) }).addTo(map).bindPopup(loc.name).openPopup(); }, i*800);
+    });
+
+    // === Chart.js Graphs ===
+    const projectsChart=new Chart(document.getElementById('projectsChart'),{
+      type:'doughnut',
+      data:{labels:['Residential','Commercial','Public','Interior'],datasets:[{data:[40,25,30,25],backgroundColor:['#d4af37','#f5d76e','#ffd700','#ffe066']} ]},
+      options:{responsive:true}
+    });
+
+    const growthChart=new Chart(document.getElementById('growthChart'),{
+      type:'line',
+      data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],datasets:[{label:'Projects Completed',data:[5,8,12,15,20,22,28,35],borderColor:'#d4af37',backgroundColor:'rgba(212,175,55,0.2)',fill:true,tension:0.4}]},
+      options:{responsive:true}
+    });
+
+    // === Scroll-triggered animations ===
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('h2,p,img').forEach((el,i)=>{
+            setTimeout(()=>{el.style.opacity=1;el.style.transform='translateY(0)';},i*200);
+          });
+        }
+      });
+    },{threshold:0.2});
+
+    document.querySelectorAll('.card').forEach(c=>observer.observe(c));
+
+  </script>
+</body>
+</html>

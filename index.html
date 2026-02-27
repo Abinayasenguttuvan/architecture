@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture </title>
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HERO SECTION */
+.arch-hero{
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding:80px;
+    color:goldenrod;
+}
+
+/* BACKGROUND SLIDER */
+.arch-slider{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-2;
+}
+
+.arch-slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:1.5s ease-in-out;
+}
+
+/* Architecture Images */
+.arch-slide:nth-child(1){
+background-image:url("./archi6.webp");
+}
+.arch-slide:nth-child(2){
+background-image:url("./archi5.webp");
+}
+.arch-slide:nth-child(3){
+background-image:url("./archi2.webp");
+}
+
+.arch-slide.active{
+    opacity:1;
+}
+
+/* NETFLIX DARK GRADIENT OVERLAY */
+.arch-hero::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:linear-gradient(
+        to right,
+        rgba(0,0,0,0.95) 10%,
+        rgba(0,0,0,0.85) 35%,
+        rgba(0,0,0,0.5) 60%,
+        rgba(0,0,0,0.2) 80%,
+        rgba(0,0,0,0.05) 100%
+    );
+    z-index:-1;
+}
+
+/* CONTENT */
+.arch-hero-content{
+    max-width:520px;
+    text-align:right;
+    animation:fadeUp 1.5s ease;
+}
+
+.arch-hero-content h1{
+    font-size:52px;
+    font-weight:700;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.arch-hero-content p{
+    margin-bottom:35px;
+    line-height:1.7;
+    font-size:16px;
+    color:#ddd;
+}
+
+/* BUTTON */
+.arch-btns button{
+    padding:14px 30px;
+    border:none;
+    background: goldenrod;
+    color:#fff;
+    cursor:pointer;
+    font-size:16px;
+    border-radius:4px;
+    transition:0.3s;
+}
+
+.arch-btns button:hover{
+    background: rgb(234, 205, 134);
+    transform:scale(1.05);
+}
+
+/* VIDEO MODAL */
+.arch-video-modal{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    top:0;
+    left:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+
+.arch-video-box{
+    width:90%;
+    max-width:800px;
+    position:relative;
+}
+
+.arch-video-box iframe{
+    width:100%;
+    height:450px;
+    border-radius:10px;
+}
+
+#closeVideo{
+    position:absolute;
+    top:-40px;
+    right:0;
+    font-size:35px;
+    cursor:pointer;
+    color:#fff;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media(max-width:992px){
+
+.arch-hero{
+    padding:50px;
+}
+
+.arch-hero-content h1{
+    font-size:38px;
+}
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+.arch-hero{
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+}
+
+.arch-hero-content{
+    text-align:center;
+}
+
+.arch-hero-content h1{
+    font-size:28px;
+}
+
+.arch-video-box iframe{
+    height:250px;
+}
+}
+
+/* LOAD FROM BOTTOM ANIMATION */
+
+.lux-reveal{
+    opacity:0;
+    transform:translateY(60px);
+    animation:luxFadeUp 1.6s ease forwards;
+    animation-delay:0.5s;
+}
+
+@keyframes luxFadeUp{
+    0%{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.lux-title{ animation-delay:0.2s; }
+.lux-desc{ animation-delay:0.6s; }
+.lux-btns{ animation-delay:1s; }
+</style>
+</head>
+
+<body>
+
+<section class="arch-hero">
+
+    <div class="arch-slider">
+        <div class="arch-slide active"></div>
+        <div class="arch-slide"></div>
+        <div class="arch-slide"></div>
+    </div>
+
+    <div class="arch-hero-content">
+
+        <h1><span id="arch-text"></span></h1>
+
+        <p>
+            Experience bold architecture concepts inspired by iconic design movements 
+            from cities like New York, Dubai and Tokyo. Discover smart, sustainable 
+            and future-ready structures redefining modern living.
+        </p>
+
+        <div class="arch-btns">
+            <button id="watchBtn">▶ Watch Video</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- VIDEO POPUP -->
+<div class="arch-video-modal" id="videoModal">
+    <div class="arch-video-box">
+        <span id="closeVideo">&times;</span>
+        <iframe id="archVideo"
+            src="./real.mp4"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<script>
+
+/* AUTO BACKGROUND SLIDER */
+let slides=document.querySelectorAll(".arch-slide");
+let index=0;
+
+function autoSlide(){
+slides.forEach(s=>s.classList.remove("active"));
+slides[index].classList.add("active");
+index=(index+1)%slides.length;
+}
+setInterval(autoSlide,4000);
+
+
+/* TYPEWRITER EFFECT */
+let textArray=[
+"Modern Architecture",
+"Luxury Urban Living",
+"Sustainable Design",
+"Future Smart Cities"
+];
+
+let count=0;
+let i=0;
+let currentText="";
+let letter="";
+
+function typing(){
+
+if(count===textArray.length){
+count=0;
+}
+
+currentText=textArray[count];
+letter=currentText.slice(0,++i);
+
+document.getElementById("arch-text").textContent=letter;
+
+if(letter.length===currentText.length){
+count++;
+i=0;
+}
+
+setTimeout(typing,120);
+}
+typing();
+
+
+/* VIDEO MODAL */
+let btn=document.getElementById("watchBtn");
+let modal=document.getElementById("videoModal");
+let close=document.getElementById("closeVideo");
+let iframe=document.getElementById("archVideo");
+
+btn.onclick=()=>{
+modal.style.display="flex";
+};
+
+close.onclick=()=>{
+modal.style.display="none";
+iframe.src=iframe.src; // stop video when closed
+};
+
+</script>
+
+
+
+
+
+
+<style>
+
+/* RESET */
+
+body{
+background:#0d0d0d;
+color:#fff;
+}
+
+/* ================= SECTION ================= */
+
+.design-section{
+width:100%;
+padding:110px 8%;
+background:linear-gradient(to bottom,#0d0d0d,#111);
+}
+
+.design-container{
+display:flex;
+align-items:center;
+gap:80px;
+}
+
+/* ================= LEFT IMAGE ================= */
+
+.design-image-wrapper{
+flex:1;
+position:relative;
+overflow:hidden;
+border-radius:80px;
+opacity:0;
+transform:translateY(80px);
+animation:imageUp 1.5s ease forwards;
+}
+
+.design-image-wrapper img{
+width:100%;
+height:520px;
+object-fit:cover;
+filter:blur(6px);
+transition:.6s ease;
+}
+
+/* Hover Effect */
+.design-image-wrapper:hover img{
+filter:blur(0);
+transform:scale(1.05);
+}
+
+/* Gold Label Box */
+.image-title-box{
+position:absolute;
+bottom:15px;   /* moved inside */
+left:50%;
+transform:translateX(-50%);
+background:linear-gradient(135deg,#c6a75e,#f5e6b3);
+color:#000;
+padding:14px 40px;
+font-weight:600;
+letter-spacing:3px;
+font-size:13px;
+border-radius:50px;
+box-shadow:0 10px 40px rgba(198,167,94,.4);
+z-index:5;
+}
+
+/* ================= RIGHT CONTENT ================= */
+
+.design-content{
+flex:1;
+}
+
+.design-tag{
+letter-spacing:5px;
+font-size:24px;
+color:#c6a75e;
+margin-bottom:15px;
+}
+
+.design-title{
+font-size:42px;
+margin-bottom:25px;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+animation-delay:.4s;
+}
+
+.design-desc{
+color:#ccc;
+line-height:1.8;
+margin-bottom:40px;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+animation-delay:.7s;
+}
+
+/* ================= FEATURES ================= */
+
+.design-features{
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-bottom:50px;
+}
+
+.feature{
+display:flex;
+gap:20px;
+align-items:flex-start;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+}
+
+.feature:nth-child(1){animation-delay:1s;}
+.feature:nth-child(2){animation-delay:1.3s;}
+.feature:nth-child(3){animation-delay:1.6s;}
+
+.feature i{
+font-size:26px;
+color:#c6a75e;
+margin-top:5px;
+}
+
+.feature h4{
+margin-bottom:8px;
+font-weight:600;
+}
+
+.feature p{
+color:#aaa;
+font-size:14px;
+}
+
+/* ================= COUNTERS ================= */
+
+.counter-section{
+display:flex;
+gap:50px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.counter{
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+}
+
+.counter:nth-child(1){animation-delay:2s;}
+.counter:nth-child(2){animation-delay:2.3s;}
+.counter:nth-child(3){animation-delay:2.6s;}
+
+.counter h3{
+font-size:38px;
+color:#c6a75e;
+margin-bottom:5px;
+}
+
+.counter p{
+font-size:13px;
+color:#bbb;
+letter-spacing:2px;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes imageUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media(max-width:992px){
+.design-container{
+flex-direction:column;
+}
+.design-image-wrapper img{
+height:380px;
+}
+.design-title{
+font-size:32px;
+}
+.counter-section{
+justify-content:center;
+}
+}
+
+/* Mobile */
+@media(max-width:768px){
+.design-section{
+padding:80px 5%;
+}
+.design-title{
+font-size:26px;
+}
+.image-title-box{
+font-size:11px;
+padding:10px 25px;
+}
+.counter h3{
+font-size:28px;
+}
+}
+
+@media(max-width:768px){
+.image-title-box{
+bottom:10px;
+}
+}
+</style>
+</head>
+
+
+
+<section class="design-section">
+
+<div class="design-container">
+
+<!-- LEFT IMAGE -->
+<div class="design-image-wrapper ds-animate ds-left">
+<img src="./archi5.webp" alt="">
+<div class="image-title-box">
+OUR DESIGN PHILOSOPHY
+</div>
+</div>
+
+<!-- RIGHT CONTENT -->
+<div class="design-content">
+
+    <div class="design-tag ds-animate ds-top">ARCHITECTURE EXCELLENCE</div>
+
+    <h2 class="design-title ds-animate ds-right">
+Creating Timeless & Luxury Spaces
+</h2>
+
+<p class="design-desc ds-animate ds-left">
+We craft architectural environments that blend elegance,
+functionality, and sustainability. Our approach ensures
+every structure stands as a symbol of innovation and luxury.
+</p>
+
+<div class="design-features">
+
+    <div class="feature ds-animate ds-left">
+<i class="fa-solid fa-lightbulb"></i>
+<div>
+<h4>Long Term Vision Planning</h4>
+<p>Future-ready designs built with sustainability and innovation.</p>
+</div>
+</div>
+
+<div class="feature ds-animate ds-right">
+<i class="fa-solid fa-handshake"></i>
+<div>
+<h4>Relationship Focused</h4>
+<p>Collaborative partnerships that prioritize client vision.</p>
+</div>
+</div>
+
+<div class="feature ds-animate ds-left">
+<i class="fa-solid fa-chart-line"></i>
+<div>
+<h4>Outcome Oriented</h4>
+<p>Delivering measurable excellence with precision and detail.</p>
+</div>
+</div>
+
+</div>
+
+<!-- COUNTERS -->
+<div class="counter-section ds-animate ds-bottom">
+
+<div class="counter">
+<h3><span class="count" data-target="250">0</span>+</h3>
+<p>PROJECTS COMPLETED</p>
+</div>
+
+<div class="counter">
+<h3><span class="count" data-target="15">0</span>+</h3>
+<p>YEARS EXPERIENCE</p>
+</div>
+
+<div class="counter">
+<h3><span class="count" data-target="98">0</span>%</h3>
+<p>CLIENT SATISFACTION</p>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+<style>
+    /* INITIAL HIDDEN STATE */
+.ds-animate{
+opacity:0;
+transition:all 1s ease;
+}
+
+/* DIRECTIONS */
+.ds-left{
+transform:translateX(-80px);
+}
+
+.ds-right{
+transform:translateX(80px);
+}
+
+.ds-top{
+transform:translateY(-60px);
+}
+
+.ds-bottom{
+transform:translateY(80px);
+}
+
+/* SHOW */
+.ds-show{
+opacity:1;
+transform:translateX(0) translateY(0);
+}
+    </style>
+
+<script>
+    
+
+// DESIGN SECTION SCROLL ANIMATION
+const dsElements = document.querySelectorAll('.ds-animate');
+
+const dsObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+
+const items = entry.target.querySelectorAll('.ds-animate');
+
+items.forEach((el,i)=>{
+setTimeout(()=>{
+el.classList.add('ds-show');
+}, i*250);
+});
+
+}
+});
+},{threshold:0.3});
+
+dsObserver.observe(document.querySelector('.design-section'));
+
+
+
+/* COUNTER ANIMATION */
+const counters=document.querySelectorAll('.count');
+
+counters.forEach(counter=>{
+counter.innerText='0';
+
+const updateCounter=()=>{
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+
+const increment=target/100;
+
+if(c<target){
+counter.innerText=Math.ceil(c+increment);
+setTimeout(updateCounter,20);
+}else{
+counter.innerText=target;
+}
+};
+
+setTimeout(updateCounter,2000);
+});
+
+</script>
+
+
+
+<section class="featured-projects">
+
+    <h2 class="fp-heading">
+    FEATURED <span>PROJECTS</span>
+    </h2>
+    
+    <div class="fp-slider">
+    
+    <button class="fp-prev">❮</button>
+    
+    <div class="fp-track">
+    
+    <!-- PROJECT 1 -->
+    <div class="fp-card">
+    <img src="./archi2.webp">
+    <div class="fp-overlay">
+    <h3>COTTON HOUSE</h3>
+    <p>Interior Design</p>
+    <a href="404.html">Details →</a>
+    </div>
+    
+    <div class="fp-bottom">
+    <p>📍 New York</p>
+    <p>📅 2024</p>
+    <p>🏛 Government Project</p>
+    </div>
+    </div>
+    
+    <!-- PROJECT 2 -->
+    <div class="fp-card">
+    <img src="./archi6.webp">
+    <div class="fp-overlay">
+    <h3>ARMADA CENTER</h3>
+    <p>Urban Planning</p>
+    <a href="404.html">Details →</a>
+    </div>
+    
+    <div class="fp-bottom">
+    <p>📍 Dubai</p>
+    <p>📅 2023</p>
+    <p>🏛 Private Project</p>
+    </div>
+    </div>
+    
+    <!-- PROJECT 3 -->
+    <div class="fp-card">
+    <img src="./archi1.webp">
+    <div class="fp-overlay">
+    <h3>SKYLINE TOWER</h3>
+    <p>Commercial</p>
+    <a href="404.html">Details →</a>
+    </div>
+    
+    <div class="fp-bottom">
+    <p>📍 Tokyo</p>
+    <p>📅 2022</p>
+    <p>🏛 Government Project</p>
+    </div>
+    </div>
+
+
+
+
+    
+    
+    </div>
+    
+    <button class="fp-next">❯</button>
+    
+    </div>
+    
+    </section>
+
+    <Style>
+        /* SECTION */
+
+        /* SCROLL LOAD ANIMATION */
+.fp-card{
+opacity:0;
+transform:translateY(80px) scale(0.95);
+transition:all 0.8s ease;
+}
+
+/* WHEN VISIBLE */
+.fp-card.fp-show{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.featured-projects{
+padding:100px 8%;
+background:#111;
+color:#fff;
+overflow:hidden;
+}
+
+.fp-heading{
+font-size:42px;
+margin-bottom:50px;
+letter-spacing:3px;
+}
+
+.fp-heading span{
+color:#c6a75e;
+}
+
+/* SLIDER */
+
+.fp-slider{
+display:flex;
+align-items:center;
+position:relative;
+}
+
+.fp-track{
+display:flex;
+gap:40px;
+transition:.6s;
+}
+
+/* CARD */
+
+.fp-card{
+width:480px;
+position:relative;
+overflow:hidden;
+border-radius:80px;
+opacity:0;
+transform:translateY(60px);
+animation:fadeUp 1s ease forwards;
+}
+
+.fp-card:nth-child(1){animation-delay:.4s;}
+.fp-card:nth-child(2){animation-delay:.7s;}
+.fp-card:nth-child(3){animation-delay:1s;}
+
+.fp-card img{
+width:100%;
+height:320px;
+object-fit:cover;
+transition:.5s;
+}
+
+/* ZOOM */
+
+.fp-card:hover img{
+transform:scale(1.1);
+}
+
+/* OVERLAY */
+
+.fp-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+opacity:0;
+transition:.4s;
+}
+
+.fp-card:hover .fp-overlay{
+opacity:1;
+}
+
+.fp-overlay a{
+margin-top:10px;
+color:#c6a75e;
+text-decoration:none;
+}
+
+/* BOTTOM DETAILS */
+
+.fp-bottom{
+background:#1a1a1a;
+padding:12px;
+display:flex;
+justify-content:space-around;
+font-size:12px;
+}
+
+/* ARROWS */
+
+.fp-prev,
+.fp-next{
+background:#c6a75e;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+position:absolute;
+top:40%;
+z-index:5;
+}
+
+.fp-prev{left:-30px;}
+.fp-next{right:-30px;}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+.fp-card{
+width:320px;
+}
+}
+
+@media(max-width:768px){
+.fp-track{
+gap:20px;
+}
+.fp-card{
+width:260px;
+}
+.fp-heading{
+font-size:28px;
+}
+}
+    </Style>
+
+<script>
+
+    let track=document.querySelector(".fp-track");
+    let next=document.querySelector(".fp-next");
+    let prev=document.querySelector(".fp-prev");
+    
+    let position=0;
+    
+    next.onclick=()=>{
+    position-=520;
+    track.style.transform="translateX("+position+"px)";
+    }
+    
+    prev.onclick=()=>{
+    position+=520;
+    track.style.transform="translateX("+position+"px)";
+    }
+    
+
+// FEATURED PROJECT SCROLL LOAD ONE BY ONE
+const fpCards = document.querySelectorAll('.fp-card');
+
+const fpObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+
+fpCards.forEach((card,index)=>{
+setTimeout(()=>{
+card.classList.add('fp-show');
+}, index * 300);   // delay for one by one animation
+});
+
+}
+});
+},{threshold:0.3});
+
+fpObserver.observe(document.querySelector('.featured-projects'));
+
+</script>
+    
+
+<style>
+
+/* ============================= */
+/* LUXURY SERVICES SECTION */
+/* ============================= */
+
+.luxx-services-section {
+    position: relative;
+    padding: 120px 8%;
+    background: #0e0e0e;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Moving Grid Background */
+.luxx-services-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,215,0,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: luxxGridMove 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes luxxGridMove {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 60px 60px, 60px 60px; }
+}
+
+/* Container */
+.luxx-services-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Heading */
+.luxx-services-heading {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #d4af37, #fff3c4, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 70px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s ease;
+}
+
+.luxx-services-heading.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Grid */
+.luxx-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* Card */
+.luxx-service-card {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,215,0,0.2);
+    backdrop-filter: blur(12px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+    opacity: 0;
+}
+
+.luxx-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+/* Reveal Directions */
+.luxx-left { transform: translateX(-80px); }
+.luxx-right { transform: translateX(80px); }
+.luxx-up { transform: translateY(80px); }
+
+.luxx-service-card.active {
+    opacity: 1;
+    transform: translate(0,0);
+    transition: 1s ease;
+}
+
+/* Icon */
+.luxx-icon {
+    font-size: 40px;
+    color: #d4af37;
+    margin-bottom: 20px;
+    animation: luxxIconFloat 4s ease-in-out infinite;
+}
+
+@keyframes luxxIconFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.luxx-service-card:hover .luxx-icon {
+    animation-play-state: paused;
+}
+
+/* Title */
+.luxx-service-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Description */
+.luxx-service-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Image with 4 Semi Circles */
+.luxx-img-wrapper {
+    position: relative;
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.luxx-img-wrapper img {
+    width: 100%;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.luxx-service-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Semi Circles */
+.luxx-img-wrapper::before,
+.luxx-img-wrapper::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+}
+
+.luxx-img-wrapper::before {
+    top: -20px;
+    left: -20px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.luxx-img-wrapper::after {
+    bottom: -20px;
+    right: -20px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Responsive */
+@media(max-width: 992px){
+    .luxx-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px){
+    .luxx-services-grid {
+        grid-template-columns: 1fr;
+    }
+    .luxx-services-heading {
+        font-size: 30px;
+    }
+}
+
+</style>
+
+
+
+<section class="ultraConsultWrap">
+
+    <div class="ultraConsultBg"></div>
+    
+    <div class="ultraConsultContainer">
+    
+    <h2 class="ultraConsultHeading">
+    <!-- <span>C</span><span>o</span><span>n</span><span>s</span><span>u</span><span>l</span><span>t</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span>
+    <span>&nbsp;</span>
+    <span>C</span><span>o</span><span>n</span><span>c</span><span>e</span><span>p</span><span>t</span>
+    <span>&nbsp;</span>
+    <span>P</span><span>l</span><span>a</span><span>n</span><span>n</span><span>i</span><span>n</span><span>g</span> -->
+    <span>CONSULTATION</span> <span>CONCEPT</span> <span>PLANNING</span>
+    </h2>
+    
+    <div class="ultraConsultFlex">
+    
+    <!-- VIDEO -->
+    <div class="ultraVideoBox ultraReveal">
+    <div class="ultraVideoFrame" id="ultraVideoOpen">
+    
+    <img src="./real.mp4"/>
+    
+    <div class="ultraPlayBtn">
+    <i class="fas fa-play"></i>
+    </div>
+    
+    </div>
+    </div>
+    
+    <!-- TIMELINE -->
+    <div class="ultraTimeline">
+    
+    <div class="ultraLine"></div>
+    
+    <div class="ultraStep ultraReveal">
+    <i class="fas fa-drafting-compass"></i>
+    <h4>Initial Consultation</h4>
+    <p>Understanding your project goals and architectural vision.</p>
+    </div>
+    
+    <div class="ultraStep ultraReveal">
+    <i class="fas fa-pencil-ruler"></i>
+    <h4>Concept Design</h4>
+    <p>Blueprint and structural planning with innovation.</p>
+    </div>
+    
+    <div class="ultraStep ultraReveal">
+    <i class="fas fa-city"></i>
+    <h4>Planning & Strategy</h4>
+    <p>Optimizing layouts for efficiency and sustainability.</p>
+    </div>
+    
+    <div class="ultraStep ultraReveal">
+    <i class="fas fa-layer-group"></i>
+    <h4>Final Presentation</h4>
+    <p>Delivering detailed concept and 3D visuals.</p>
+    </div>
+    
+    </div>
+    
+    </div>
+    </div>
+    
+    <!-- VIDEO POPUP -->
+    <div class="ultraPopup" id="ultraPopup">
+    <div class="ultraPopupContent">
+    <span id="ultraClose">&times;</span>
+    
+    <iframe src="./real.mp4"
+    allowfullscreen></iframe>
+    
+    </div>
+    </div>
+
+    <section class="ultraShowcaseWrap">
+
+        <div class="ultraShowcaseBg"></div>
+        
+        <div class="ultraShowcaseContainer">
+        
+        <h2 class="ultraShowcaseTitle">3D Project Showcase</h2>
+        
+        <div class="ultraProjectGrid">
+
+            <!-- SQUARE -->
+            <div class="ultraProjectCard ultraReveal ultraDelay1 ultraSquare">
+            <div class="ultraProjectInner">
+            <img src="./archi5.webp">
+            <div class="ultraProjectOverlay">
+            <h3>Luxury Villa</h3>
+            <button class="ultraCaseBtn" onclick="openUltraCase()">View Case Study</button>
+            </div>
+            </div>
+            </div>
+            
+            <!-- RECTANGLE -->
+            <div class="ultraProjectCard ultraReveal ultraDelay2 ultraRectangle">
+            <div class="ultraProjectInner">
+            <img src="./archi6.webp">
+            <div class="ultraProjectOverlay">
+            <h3>Corporate Tower</h3>
+            <button class="ultraCaseBtn" onclick="openUltraCase()">View Case Study</button>
+            </div>
+            </div>
+            </div>
+            
+            <!-- SQUARE -->
+            <div class="ultraProjectCard ultraReveal ultraDelay3 ultraSquare">
+            <div class="ultraProjectInner">
+            <img src="./interior.webp">
+            <div class="ultraProjectOverlay">
+            <h3>Modern Residence</h3>
+            <button class="ultraCaseBtn" onclick="openUltraCase()">View Case Study</button>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+        
+        <!-- CASE STUDY POPUP -->
+        <div class="ultraCaseModal" id="ultraCaseModal">
+        <div class="ultraCaseContent">
+        <span class="ultraCaseClose" onclick="closeUltraCase()">×</span>
+        
+        <h2>Project Case Study</h2>
+        <p>This project focused on sustainable materials, space optimization, and modern architectural elegance. 
+        We implemented advanced structural modeling and premium finishing concepts to deliver a luxury result.</p>
+        
+        <div class="ultraCaseImages">
+        <img src="./buy.webp">
+        <img src="./bed.webp">
+        </div>
+        
+        </div>
+        </div>
+        
+        </section>
+    
+    </section>
+
+
+    <style>
+
+        /* SHAPES */
+
+.ultraSquare img{
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:40px;
+}
+
+.ultraRectangle img{
+aspect-ratio:4/5;
+object-fit:cover;
+border-radius:40px;
+}
+
+/* GRID */
+
+.ultraProjectGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+align-items:start;
+}
+
+/* LOAD ONE BY ONE */
+
+.ultraReveal{
+opacity:0;
+transform:translateY(80px) scale(0.9);
+transition:1s ease;
+}
+
+.ultraReveal.show{
+    
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.ultraDelay1{transition-delay:0.2s;}
+.ultraDelay2{transition-delay:0.6s;}
+.ultraDelay3{transition-delay:1s;}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.ultraRectangle img{
+aspect-ratio:1/1;
+}
+
+}
+
+
+.ultraShowcaseWrap{
+position:relative;
+padding:120px 20px;
+overflow:hidden;
+}
+
+.ultraShowcaseBg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("./\ white\ back.webp") center/cover no-repeat;
+z-index:-2;
+transform:scale(1.1);
+animation:ultraBgMove 20s infinite alternate ease-in-out;
+}
+
+@keyframes ultraBgMove{
+from{transform:scale(1.1) translateY(0);}
+to{transform:scale(1.2) translateY(-40px);}
+}
+
+.ultraShowcaseTitle{
+text-align:center;
+font-size:40px;
+color:gold;
+margin-bottom:60px;
+text-shadow:0 0 20px rgba(255,215,0,0.6);
+}
+
+.ultraProjectGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.ultraProjectCard{
+perspective:1000px;
+}
+
+.ultraProjectInner{
+position:relative;
+transition:transform 0.6s;
+transform-style:preserve-3d;
+}
+
+.ultraProjectCard:hover .ultraProjectInner{
+transform:rotateY(10deg) rotateX(10deg) scale(1.05);
+}
+
+.ultraProjectInner img{
+width:100%;
+border-radius:20px;
+display:block;
+}
+
+.ultraProjectOverlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+border-radius:20px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:20px;
+opacity:0;
+transition:0.5s;
+}
+
+.ultraProjectCard:hover .ultraProjectOverlay{
+opacity:1;
+}
+
+.ultraProjectOverlay h3{
+color:#fff;
+margin-bottom:10px;
+}
+
+.ultraCaseBtn{
+background:gold;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.ultraCaseBtn:hover{
+background:#fff;
+}
+
+.ultraFadeUp{
+opacity:0;
+transform:translateY(50px);
+transition:0.8s ease;
+}
+
+.ultraFadeUp.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* CASE MODAL */
+
+.ultraCaseModal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+z-index:9999;
+}
+
+.ultraCaseContent{
+background:#111;
+width:90%;
+max-width:800px;
+margin:5% auto;
+padding:40px;
+border-radius:20px;
+color:#fff;
+position:relative;
+animation:ultraScale 0.5s ease;
+}
+
+@keyframes ultraScale{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.ultraCaseClose{
+position:absolute;
+right:20px;
+top:20px;
+font-size:28px;
+cursor:pointer;
+color:gold;
+}
+
+.ultraCaseImages{
+display:flex;
+gap:20px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.ultraCaseImages img{
+width:48%;
+border-radius:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.ultraShowcaseTitle{
+font-size:28px;
+}
+
+.ultraCaseImages img{
+width:100%;
+}
+
+}
+
+    .ultraConsultWrap{
+        position:relative;
+        padding:100px 20px;
+        overflow:hidden;
+        font-family:sans-serif;
+        color:goldenrod;
+        font-size: 20px;
+        }
+        
+        .ultraConsultBg{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:url("./im3.webp") center/cover no-repeat;
+        z-index:-2;
+        transform:scale(1.2);
+        animation:ultraParallax 20s infinite alternate ease-in-out;
+        }
+        
+        @keyframes ultraParallax{
+        from{transform:scale(1.1) translateY(0);}
+        to{transform:scale(1.3) translateY(-40px);}
+        }
+        
+        .ultraConsultHeading span{
+        opacity:0;
+        display:inline-block;
+        transform:translateY(50px);
+        animation:ultraSplit 0.6s forwards;
+        }
+        
+        .ultraConsultHeading span:nth-child(n){
+        animation-delay:calc(0.05s * var(--i));
+        }
+        
+        @keyframes ultraSplit{
+        to{opacity:1;transform:translateY(0);}
+        }
+        
+        .ultraConsultFlex{
+        display:flex;
+        flex-wrap:wrap;
+        gap:40px;
+        align-items:center;
+        justify-content:center;
+        }
+        
+        .ultraVideoFrame{
+        position:relative;
+        cursor:pointer;
+        perspective:1000px;
+        animation:ultraFloat 4s infinite ease-in-out;
+        }
+        
+        .ultraVideoFrame img{
+        width:350px;
+        border-radius:20px;
+        border:3px solid gold;
+        }
+        
+        .ultraPlayBtn{
+
+            padding:14px 30px;
+    
+            
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        background:gold;
+        padding:15px;
+        border-radius:50%;
+        }
+        
+        @keyframes ultraFloat{
+        0%,100%{transform:translateY(0);}
+        50%{transform:translateY(-20px);}
+        }
+        
+        .ultraTimeline{
+        position:relative;
+        padding-left:40px;
+        }
+        
+        .ultraLine{
+        position:absolute;
+        left:10px;
+        top:0;
+        width:3px;
+        height:100%;
+        background:gold;
+        animation:ultraDraw 2s forwards;
+        }
+        
+        @keyframes ultraDraw{
+        from{height:0;}
+        to{height:100%;}
+        }
+        
+        .ultraStep{
+        margin-bottom:30px;
+        background:rgba(255,255,255,0.1);
+        backdrop-filter:blur(10px);
+        padding:15px;
+        border-radius:10px;
+        border:1px solid gold;
+        opacity:0;
+        transform:translateY(40px);
+        transition:0.5s;
+        }
+        
+        .ultraStep i{
+        color:gold;
+        font-size:22px;
+        }
+        
+        .ultraReveal.show{
+        opacity:1;
+        transform:translateY(0);
+        }
+        
+        .ultraPopup{
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.8);
+        }
+        
+        .ultraPopupContent{
+        position:relative;
+        width:80%;
+        margin:5% auto;
+        }
+        
+        .ultraPopupContent iframe{
+        width:100%;
+        height:400px;
+        }
+
+        </style>
+
+<script>
+
+
+
+
+function openUltraCase(){
+document.getElementById("ultraCaseModal").style.display="block";
+}
+
+function closeUltraCase(){
+document.getElementById("ultraCaseModal").style.display="none";
+}
+
+let ultraItems=document.querySelectorAll(".ultraReveal");
+
+function ultraScrollLoad(){
+ultraItems.forEach(el=>{
+let pos=el.getBoundingClientRect().top;
+if(pos < window.innerHeight - 100){
+el.classList.add("show");
+}
+});
+}
+
+window.addEventListener("scroll",ultraScrollLoad);
+window.addEventListener("load",ultraScrollLoad);
+
+
+
+
+    let reveals=document.querySelectorAll(".ultraReveal");
+    
+    window.addEventListener("scroll",()=>{
+    reveals.forEach(r=>{
+    let top=r.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+    r.classList.add("show");
+    }
+    });
+    });
+    
+    document.getElementById("ultraVideoOpen").onclick=function(){
+    document.getElementById("ultraPopup").style.display="block";
+    }
+    
+    document.getElementById("ultraClose").onclick=function(){
+    document.getElementById("ultraPopup").style.display="none";
+    }
+    
+    </script>
+
+
+
+
+
+<section class="luxx-services-section">
+
+<div class="luxx-services-container">
+
+<h2 class="luxx-services-heading luxx-reveal">Our Premium Services</h2>
+
+<div class="luxx-services-grid">
+
+<!-- CARD 1 -->
+<div class="luxx-service-card luxx-left luxx-reveal">
+<div class="luxx-icon"><i class="fa-solid fa-building"></i></div>
+<h3>Luxury Architecture</h3>
+<p>Premium architectural design combining innovation and timeless elegance.</p>
+<div class="luxx-img-wrapper">
+<img src="./beach.webp">
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="luxx-service-card luxx-up luxx-reveal">
+<div class="luxx-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+<h3>Interior Mastery</h3>
+<p>Elegant interior concepts crafted for comfort and sophistication.</p>
+<div class="luxx-img-wrapper">
+<img src="./interior.webp">
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="luxx-service-card luxx-right luxx-reveal">
+<div class="luxx-icon"><i class="fa-solid fa-city"></i></div>
+<h3>Urban Planning</h3>
+<p>Future-ready urban environments designed with sustainability focus.</p>
+<div class="luxx-img-wrapper">
+<img src="./urban.webp">
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="arcPartner-section">
+
+    <h2 class="arcPartner-heading">
+    OUR <span>PARTNERS</span>
+    </h2>
+    
+    <div class="arcPartner-wrapper arcPartner-reveal">
+    
+        <div class="arcPartner-track">
+
+            <img src="./partner.webp">
+            <img src="./partner1.webp">
+            <img src="./partner2.webp">
+            <img src="./partner3.webp">
+            <img src="./partner5.webp">
+            
+            <!-- duplicate for smooth scroll -->
+            
+            <img src="./partner.webp">
+            <img src="./partner1.webp">
+            <img src="./partner2.webp">
+            <img src="./partner3.webp">
+            <img src="./partner5.webp">
+            
+            
+            </div>
+    
+    </section>
+
+
+<script>
+
+/* Scroll Reveal Animation */
+const luxxRevealElements = document.querySelectorAll('.luxx-reveal');
+
+const luxxObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.2 });
+
+luxxRevealElements.forEach(el => {
+    luxxObserver.observe(el);
+});
+
+</script>
+
+
+<section class="arcTS-section">
+
+    <div class="arcTS-bg"></div>
+    
+    <div class="arcTS-container">
+    
+    <h2 class="arcTS-heading arcTS-reveal">
+    CLIENT <span>TESTIMONIALS</span>
+    </h2>
+    
+    <div class="arcTS-content">
+    
+    <!-- LEFT VIDEO -->
+    <div class="arcTS-video arcTS-reveal">
+    <div class="arcTS-play-btn" id="arcTS-play">
+    <i class="fa-solid fa-play"></i>
+    </div>
+    </div>
+    
+    <!-- RIGHT TESTIMONIAL -->
+    <div class="arcTS-testimonial arcTS-reveal">
+    
+    <div class="arcTS-slider">
+    
+    <div class="arcTS-slide active">
+    <img src="sana.webp">
+    <h4>Emily Watson</h4>
+    <p>" Outstanding architecture service with luxury finishing Lorem ipsum dolor sit amet "</p>
+    </div>
+    
+    <div class="arcTS-slide">
+    <img src="./arjun.webp">
+    <h4>David Smith</h4>
+    <p>"Future ready designs with premium detailing Lorem ipsum dolor sit amet"</p>
+    </div>
+    
+    <div class="arcTS-slide">
+    <img src="./nithiya.webp">
+    <h4>Sophia Lee</h4>
+    <p>"Creative and sustainable architectural concepts Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet "</p>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    <!-- ICON SCROLL -->
+    <div class="arcTS-icons">
+    
+    <div class="arcTS-track">
+    
+    <div class="arcTS-icon-box">
+    <i class="fa-solid fa-building"></i>
+    <span>Urban Planning</span>
+    </div>
+    
+    <div class="arcTS-icon-box">
+    <i class="fa-solid fa-house"></i>
+    <span>Residential</span>
+    </div>
+    
+    <div class="arcTS-icon-box">
+    <i class="fa-solid fa-city"></i>
+    <span>Commercial</span>
+    </div>
+    
+    <div class="arcTS-icon-box">
+    <i class="fa-solid fa-drafting-compass"></i>
+    <span>Interior Design</span>
+    </div>
+    
+    <div class="arcTS-icon-box">
+    <i class="fa-solid fa-layer-group"></i>
+    <span>Landscape</span>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    <!-- VIDEO POPUP -->
+    <div class="arcTS-popup" id="arcTS-popup">
+    <div class="arcTS-popup-content">
+    <span id="arcTS-close">&times;</span>
+    <iframe width="100%" height="400"
+    src="./real.mp4"
+    frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+    
+    </section>
+
+
+    <style>
+        .arcTS-section{
+position:relative;
+padding:100px 5%;
+color:#fff;
+overflow:hidden;
+}
+
+.arcTS-bg{
+position:absolute;
+inset:0;
+background:url('./im3.webp') center/cover;
+z-index:-2;
+}
+
+.arcTS-bg::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.7);
+}
+
+.arcTS-heading{
+text-align:center;
+font-size:40px;
+margin-bottom:60px;
+}
+.arcTS-heading span{color:#d4af37;}
+
+.arcTS-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+/* VIDEO */
+.arcTS-play-btn{
+width:80px;
+height:80px;
+border-radius:50%;
+background:#d4af37;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:30px;
+animation:pulse 2s infinite;
+}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+/* TESTIMONIAL */
+.arcTS-slider{
+position:relative;
+}
+.arcTS-slide{
+text-align:center;
+display:none;
+}
+.arcTS-slide.active{display:block;}
+.arcTS-slide img{
+width:80px;
+height:80px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+/* ICON SCROLL */
+.arcTS-icons{
+margin-top:60px;
+overflow:hidden;
+}
+.arcTS-track{
+display:flex;
+gap:40px;
+animation:scroll 30s linear infinite;
+}
+@keyframes scroll{
+0%{transform:translateX(100%);}
+100%{transform:translateX(-100%);}
+}
+
+.arcTS-icon-box{
+text-align:center;
+cursor:pointer;
+}
+.arcTS-icon-box i{
+font-size:28px;
+color:#d4af37;
+}
+.arcTS-icon-box span{
+display:none;
+font-size:12px;
+}
+.arcTS-icon-box:hover span{
+display:block;
+}
+
+/* POPUP */
+.arcTS-popup{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+.arcTS-popup-content{
+background:#000;
+padding:20px;
+position:relative;
+}
+#arcTS-close{
+position:absolute;
+top:5px;
+right:10px;
+font-size:30px;
+cursor:pointer;
+}
+
+/* SCROLL LOAD */
+.arcTS-reveal{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+.arcTS-reveal.active{
+opacity:1;
+transform:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.arcTS-content{
+grid-template-columns:1fr;
+text-align:center;
+}
+}
+    </style>
+
+<script>
+
+    /* TESTIMONIAL SLIDER */
+    let arcIndex=0;
+    const arcSlides=document.querySelectorAll(".arcTS-slide");
+    setInterval(()=>{
+    arcSlides.forEach(s=>s.classList.remove("active"));
+    arcIndex=(arcIndex+1)%arcSlides.length;
+    arcSlides[arcIndex].classList.add("active");
+    },3000);
+    
+    /* VIDEO POPUP */
+    document.getElementById("arcTS-play").onclick=()=>{
+    document.getElementById("arcTS-popup").style.display="flex";
+    }
+    document.getElementById("arcTS-close").onclick=()=>{
+    document.getElementById("arcTS-popup").style.display="none";
+    }
+    
+    /* SCROLL LOAD */
+    const arcReveal=document.querySelectorAll('.arcTS-reveal');
+    const arcObs=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+    if(entry.isIntersecting){
+    entry.target.classList.add("active");
+    }
+    });
+    },{threshold:0.2});
+    arcReveal.forEach(el=>arcObs.observe(el));
+    
+    </script>
+
+
+
+
+
+    <style>
+
+        .arcPartner-section{
+        padding:80px 5%;
+        background:#000;
+        overflow:hidden;
+        }
+        
+        .arcPartner-heading{
+        text-align:center;
+        font-size:40px;
+        color:#fff;
+        margin-bottom:50px;
+        }
+        
+        .arcPartner-heading span{
+        color:#d4af37;
+        }
+        
+        .arcPartner-wrapper{
+        overflow:hidden;
+        position:relative;
+        }
+        .arcPartner-track{
+display:flex;
+gap:80px;
+animation:arcPartner-scroll 25s linear infinite;
+align-items:center;
+will-change:transform;
+backface-visibility:hidden;
+}
+        .arcPartner-wrapper:hover .arcPartner-track{
+        animation-play-state:paused;
+        }
+        
+        .arcPartner-track img{
+height:60px;
+width:auto;
+object-fit:contain;
+filter:brightness(0) invert(1) opacity(0.6);
+transition:0.4s ease;
+}
+        
+.arcPartner-track img{
+height:60px;
+width:auto;
+object-fit:contain;
+filter:brightness(0) invert(1) opacity(0.6);
+transition:all 0.5s ease;
+cursor:pointer;
+}
+
+/* GOLD HOVER */
+.arcPartner-track img:hover{
+filter:
+brightness(0)
+invert(76%)
+sepia(32%)
+saturate(500%)
+hue-rotate(10deg)
+opacity(1);
+transform:scale(0.85);
+box-shadow:0 0 20px rgba(212,175,55,0.7);
+}     
+        /* SCROLL */
+        @keyframes arcPartner-scroll{
+        0%{transform:translateX(100%);}
+        100%{transform:translateX(-100%);}
+        }
+        
+        /* LOAD ANIMATION */
+        .arcPartner-reveal{
+        opacity:0;
+        transform:translateY(80px);
+        transition:1s;
+        }
+        .arcPartner-reveal.active{
+        opacity:1;
+        transform:translateY(0);
+        }
+        
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+        .arcPartner-track img{
+        height:50px;
+        }
+        }
+        
+        @media(max-width:768px){
+        .arcPartner-track{
+        gap:40px;
+        }
+        .arcPartner-track img{
+        height:40px;
+        }
+        .arcPartner-heading{
+        font-size:28px;
+        }
+        }
+
+        @media(max-width:768px){
+
+.arcPartner-track img{
+height:40px;
+}
+
+.arcPartner-track img:hover{
+transform:scale(0.9);
+}
+
+}
+        
+        </style>
+
+
+        
+            <script>
+
+const partnerReveal=document.querySelectorAll(".arcPartner-reveal");
+
+const partnerObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}
+});
+},{threshold:0.3});
+
+partnerReveal.forEach(el=>partnerObserver.observe(el));
+
+</script>
+            
+
+
+
+
+
+</body>
+</html>
+
