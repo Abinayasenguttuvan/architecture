@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style1.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about1.html">About</a></li>
+                <li><a href="./property.html">Property</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact1.html">Contact</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+
+    <section class="abx-parallax-section">
+
+        <div class="abx-parallax-overlay"></div>
+        
+        <div class="abx-container">
+        
+        <h2 class="abx-split-heading">
+        <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
+        <span>&nbsp;</span>
+        <span>E</span><span>x</span><span>c</span><span>e</span><span>l</span><span>l</span><span>e</span><span>n</span><span>c</span><span>e</span>
+        </h2>
+        
+        <div class="abx-gold-line"></div>
+        
+        <div class="abx-flex">
+        
+        <!-- LEFT IMAGES -->
+        <div class="abx-img-grid">
+        
+        <img src="./archi.webp" class="abx-img abx-square">
+        <img src="./archi1.webp" class="abx-img abx-rect">
+        <img src="./archi5.webp" class="abx-img abx-square">
+        <img src="./archi2.webp" class="abx-img abx-rect">
+        
+        </div>
+        
+        <!-- RIGHT CONTENT -->
+        <div class="abx-content">
+        
+        <div class="abx-point">
+        <i class="fa-solid fa-building"></i>
+        <p style="font-size: 30px; color:white;">
+            Premium structural planning with futuristic design principles.
+            </p>
+        </div>
+        
+        <div class="abx-point">
+        <i class="fa-solid fa-ruler-combined"></i>
+        <p style="font-size: 30px; color:white;">Precision based architectural layout development.</p>
+        </div>
+        
+        <div class="abx-point">
+        <i class="fa-solid fa-house"></i>
+        <p style="font-size: 30px; color:white;">Smart spatial utilization for modern luxury living.</p>
+        </div>
+        
+        <div class="abx-point">
+        <i class="fa-solid fa-leaf"></i>
+        <p style="font-size: 30px; color:white;">Sustainable eco-friendly material integration.</p>
+        </div>
+        
+        <div class="abx-point">
+        <i class="fa-solid fa-city"></i>
+        <p style="font-size: 30px; color:white;">Urban inspired aesthetic elevation concepts.</p>
+        </div>
+        
+        </div>
+        
+        </div>
+        </div>
+        </section>
+
+    <style>
+        .reab-section{
+padding:100px 5%;
+background:#0e0e0e;
+color:#fff;
+overflow:hidden;
+}
+
+.reab-container{
+display:flex;
+align-items:center;
+gap:60px;
+flex-wrap:wrap;
+}
+
+/* IMAGE */
+.reab-imgbox{
+flex:1 1 450px;
+overflow:hidden;
+border-radius:10px;
+}
+
+.reab-img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+.reab-imgbox:hover .reab-img{
+transform:scale(1.08);
+}
+
+/* CONTENT */
+.reab-content{
+flex:1 1 450px;
+}
+
+.reab-title{
+font-size:38px;
+margin-bottom:20px;
+color: burlywood;
+opacity:0;
+transform:translateY(60px);
+transition:0.4s;
+}
+
+.reab-text{
+margin-bottom:15px;
+opacity:0;
+transform:translateY(60px);
+transition:0.8s;
+}
+
+.reab-list{
+    
+margin-top:20px;
+list-style:none;
+padding:0;
+}
+
+.reab-item{
+margin-bottom:10px;
+opacity:0;
+transform:translateX(-40px);
+transition:0.6s;
+}
+
+/* SHOW */
+.reab-reveal.show{
+opacity:1;
+transform:translate(0);
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* LAPTOP */
+@media(max-width:1200px){
+.reab-title{font-size:32px;}
+}
+
+/* TABLET */
+@media(max-width:992px){
+.reab-container{
+flex-direction:column;
+}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.reab-title{font-size:24px;}
+.reab-text{font-size:14px;}
+}
+    </style>
+
+<script>
+
+    let about=document.querySelectorAll(".reab-reveal");
+    
+    window.addEventListener("scroll",()=>{
+    about.forEach((el,i)=>{
+    let top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+    setTimeout(()=>{
+    el.classList.add("show");
+    },i*250);
+    }
+    });
+    });
+    
+    </script>
+
+
+
+<section class="rea2-agent-section">
+
+    <div class="rea2-agent-container">
+    
+    <h2 class="rea2-heading">Meet Our Expert Agents</h2>
+    
+    <div class="rea2-agent-grid">
+    
+    <!-- AGENT 1 -->
+    <div class="rea2-agent-card rea2-reveal-right">
+    <div class="rea2-img-wrap">
+    <img src="./sana.webp" alt="">
+    </div>
+    <div class="rea2-agent-content">
+    <h4>Arjun Mehta</h4>
+    <p>Luxury Property Specialist</p>
+    </div>
+    </div>
+    
+    <!-- AGENT 2 -->
+    <div class="rea2-agent-card rea2-reveal-right">
+    <div class="rea2-img-wrap">
+    <img src="./nithiya.webp" alt="">
+    </div>
+    <div class="rea2-agent-content">
+    <h4>Divya Rao</h4>
+    <p>Commercial Property Consultant</p>
+    </div>
+    </div>
+    
+    <!-- AGENT 3 -->
+    <div class="rea2-agent-card rea2-reveal-right">
+    <div class="rea2-img-wrap">
+    <img src="./arjun.webp" alt="">
+    </div>
+    <div class="rea2-agent-content">
+    <h4>Rahul Sharma</h4>
+    <p>Investment Advisor</p>
+    </div>
+    </div>
+    
+    <!-- AGENT 4 -->
+    <div class="rea2-agent-card rea2-reveal-right">
+    <div class="rea2-img-wrap">
+    <img src="./sana.webp" alt="">
+    </div>
+    <div class="rea2-agent-content">
+    <h4>Sneha Kapoor</h4>
+    <p>Residential Consultant</p>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    </section>
+
+    <style>
+
+        .rea2-agent-section{
+        padding:80px 8%;
+        background:#f8f8f8;
+        overflow:hidden;
+        }
+        
+        .rea2-heading{
+        text-align:center;
+        font-size:42px;
+        margin-bottom:60px;
+        }
+        
+        .rea2-agent-grid{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:30px;
+        }
+        
+        /* CARD */
+        .rea2-agent-card{
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        transform:translateX(80px);
+        opacity:0;
+        transition:1s;
+        animation:floatingZoom 4s ease-in-out infinite;
+        }
+        
+        /* IMAGE */
+        .rea2-img-wrap{
+        height:260px;
+        overflow:hidden;
+        }
+        
+        .rea2-img-wrap img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transition:0.6s;
+        }
+        
+        /* HOVER ZOOM */
+        .rea2-agent-card:hover img{
+        transform:scale(1.15);
+        }
+        
+        /* CONTENT */
+        .rea2-agent-content{
+        padding:20px;
+        text-align:center;
+        transition:0.4s;
+        }
+        
+        .rea2-agent-card:hover .rea2-agent-content{
+        transform:scale(1.05);
+        }
+        
+        /* FLOAT ZOOM */
+        @keyframes floatingZoom{
+        0%,100%{transform:translateY(0px) scale(1);}
+        50%{transform:translateY(-8px) scale(1.02);}
+        }
+        
+        /* SCROLL LOAD */
+        .rea2-show{
+        opacity:1;
+        transform:translateX(0);
+        }
+        
+        .rea2-agent-card:nth-child(1){transition-delay:0.2s;}
+        .rea2-agent-card:nth-child(2){transition-delay:0.4s;}
+        .rea2-agent-card:nth-child(3){transition-delay:0.6s;}
+        .rea2-agent-card:nth-child(4){transition-delay:0.8s;}
+        
+        /* ================= RESPONSIVE ================= */
+        
+        @media(max-width:1200px){
+        .rea2-agent-grid{
+        grid-template-columns:repeat(3,1fr);
+        }
+        }
+        
+        @media(max-width:992px){
+        .rea2-agent-grid{
+        grid-template-columns:repeat(2,1fr);
+        }
+        }
+        
+        @media(max-width:600px){
+        .rea2-agent-grid{
+        grid-template-columns:1fr;
+        }
+        .rea2-heading{
+        font-size:28px;
+        }
+        }
+        
+        </style>
+
+<script>
+
+    const rea2Reveal = document.querySelectorAll('.rea2-reveal-right');
+    
+    window.addEventListener('scroll',()=>{
+    
+    for(let i=0;i<rea2Reveal.length;i++){
+    
+    let windowHeight = window.innerHeight;
+    let revealTop = rea2Reveal[i].getBoundingClientRect().top;
+    let revealPoint = 120;
+    
+    if(revealTop < windowHeight - revealPoint){
+    rea2Reveal[i].classList.add('rea2-show');
+    }
+    
+    }
+    });
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <style>
+       
+
+.rea3-stats-section{
+width:100%;
+overflow:hidden;
+padding:80px 5%;
+background:#f5f5f5;
+}
+
+.rea3-stats-slider{
+overflow:hidden;
+position:relative;
+}
+
+.rea3-stats-track{
+display:flex;
+width:200%;
+animation:rea3Slide 18s linear infinite;
+}
+
+@keyframes rea3Slide{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+.rea3-stats-container{
+display:flex;
+min-width:100%;
+align-items:center;
+gap:60px;
+}
+
+/* IMAGE */
+.rea3-stats-img{
+flex:1;
+overflow:hidden;
+border-radius:12px;
+animation:rea3Float 4s ease-in-out infinite;
+}
+
+.rea3-stats-img img{
+width:100%;
+height:420px;
+object-fit:cover;
+transition:0.6s;
+}
+
+.rea3-stats-img:hover img{
+transform:scale(1.1);
+}
+
+/* FLOAT ANIMATION */
+@keyframes rea3Float{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.04);}
+}
+
+/* CONTENT */
+.rea3-stats-content{
+flex:1;
+}
+
+.rea3-stats-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:30px;
+}
+
+.rea3-stat-box{
+background:#fff;
+padding:25px;
+text-align:center;
+border-radius:8px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transform:translateX(80px);
+opacity:0;
+transition:1s;
+}
+
+.rea3-show{
+opacity:1;
+transform:translateX(0);
+}
+
+.rea3-counter{
+font-size:42px;
+color:#d4af37;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+.rea3-stats-container{
+flex-direction:column;
+}
+.rea3-stats-img img{
+height:300px;
+}
+}
+
+@media(max-width:600px){
+.rea3-stats-grid{
+grid-template-columns:1fr;
+}
+.rea3-counter{
+font-size:32px;
+}
+}
+
+</style>
+
+
+
+<section class="rea5-why-section">
+
+    <div class="rea5-why-container">
+    
+    <!-- LEFT IMAGE -->
+    <div class="rea5-why-img">
+    <img src="./skyline.webp" alt="">
+    </div>
+    
+    <!-- RIGHT CONTENT -->
+    <div class="rea5-why-content">
+    
+    <h2 class="rea5-title">Why Choose Us</h2>
+    
+    <div class="rea5-why-card rea5-reveal-right">
+    <div class="rea5-card-icon">
+    <i class="fa-solid fa-user-shield"></i>
+    </div>
+    <div class="rea5-card-img">
+    <img src="./bed.webp">
+    </div>
+    <div class="rea5-text">
+    <h4>Trusted Expertise</h4>
+    <p>Over a decade of real estate market experience.</p>
+    </div>
+    </div>
+    
+    <div class="rea5-why-card rea5-reveal-right">
+    <div class="rea5-card-icon">
+    <i class="fa-solid fa-location-dot"></i>
+    </div>
+    <div class="rea5-card-img">
+    <img src="./rent.webp">
+    </div>
+    <div class="rea5-text">
+    <h4>Prime Locations</h4>
+    <p>Strategically located premium properties.</p>
+    </div>
+    </div>
+    
+    <div class="rea5-why-card rea5-reveal-right">
+    <div class="rea5-card-icon">
+    <i class="fa-solid fa-headset"></i>
+    </div>
+    <div class="rea5-card-img">
+    <img src="./im3.webp">
+    </div>
+    <div class="rea5-text">
+    <h4>Customer First Approach</h4>
+    <p>Dedicated support from start to finish.</p>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    </section>
+
+
+    <style>
+        
+
+.rea5-why-section{
+padding:80px 8%;
+background:#fafafa;
+overflow:hidden;
+}
+
+.rea5-why-container{
+display:flex;
+align-items:center;
+gap:60px;
+}
+
+/* LEFT IMAGE */
+.rea5-why-img{
+flex:1;
+overflow:hidden;
+border-radius:12px;
+transform:translateX(-80px);
+opacity:0;
+transition:1s;
+animation:rea5Float 4s ease-in-out infinite;
+}
+
+.rea5-why-img img{
+width:100%;
+height:420px;
+object-fit:cover;
+transition:0.6s;
+}
+
+.rea5-why-img:hover img{
+transform:scale(1.1);
+}
+
+/* FLOAT */
+@keyframes rea5Float{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.04);}
+}
+
+/* CONTENT */
+.rea5-why-content{
+flex:1;
+}
+
+.rea5-title{
+font-size:40px;
+margin-bottom:30px;
+}
+
+/* CARD */
+.rea5-why-card{
+display:flex;
+align-items:center;
+gap:15px;
+background:#fff;
+padding:18px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transform:translateX(80px);
+opacity:0;
+transition:1s;
+}
+
+/* ICON */
+.rea5-card-icon i{
+font-size:22px;
+color:#d4af37;
+}
+
+/* SMALL IMAGE */
+.rea5-card-img{
+width:60px;
+height:60px;
+overflow:hidden;
+border-radius:8px;
+}
+
+.rea5-card-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.rea5-why-card:hover .rea5-card-img img{
+transform:scale(1.2);
+}
+
+.rea5-why-card:hover{
+transform:scale(1.04);
+}
+
+/* LOAD */
+.rea5-show{
+opacity:1;
+transform:translateX(0);
+}
+
+.rea5-why-card:nth-child(2){transition-delay:0.2s;}
+.rea5-why-card:nth-child(3){transition-delay:0.4s;}
+.rea5-why-card:nth-child(4){transition-delay:0.6s;}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+.rea5-why-container{
+flex-direction:column;
+}
+.rea5-why-img img{
+height:300px;
+}
+}
+
+@media(max-width:600px){
+.rea5-title{
+font-size:26px;
+}
+.rea5-why-card{
+flex-direction:column;
+text-align:center;
+}
+}
+
+</style>
+
+<script>
+
+    const rea5Img = document.querySelector('.rea5-why-img');
+    const rea5Cards = document.querySelectorAll('.rea5-why-card');
+    
+    window.addEventListener('scroll',()=>{
+    
+    let win = window.innerHeight;
+    let imgTop = rea5Img.getBoundingClientRect().top;
+    
+    if(imgTop < win - 100){
+    rea5Img.classList.add('rea5-show');
+    }
+    
+    rea5Cards.forEach((card,i)=>{
+    
+    let top = card.getBoundingClientRect().top;
+    
+    if(top < win - 100){
+    setTimeout(()=>{
+    card.classList.add('rea5-show');
+    },i*250);
+    }
+    
+    });
+    
+    });
+    
+    </script>
+        
+
+
+
+
+
+
+        
+
+<section class="rea4-progress-section">
+
+    <div class="rea4-progress-container">
+    
+    <div class="rea4-progress-img">
+    <img src="./im3.webp">
+    </div>
+    
+    <div class="rea4-progress-content">
+    
+    <h2 class="rea4-title">Our Performance & Achievements</h2>
+    
+    <div class="rea4-progress-box rea4-reveal-right">
+    <i class="fa-solid fa-building"></i>
+    <p>Luxury Residential Projects</p>
+    <div class="rea4-progress-bar">
+    <span data-progress="90"></span>
+    </div>
+    </div>
+    
+    <div class="rea4-progress-box rea4-reveal-right">
+    <i class="fa-solid fa-city"></i>
+    <p>Commercial Developments</p>
+    <div class="rea4-progress-bar">
+    <span data-progress="85"></span>
+    </div>
+    </div>
+    
+    <div class="rea4-progress-box rea4-reveal-right">
+    <i class="fa-solid fa-leaf"></i>
+    <p>Sustainable Design Implementation</p>
+    <div class="rea4-progress-bar">
+    <span data-progress="80"></span>
+    </div>
+    </div>
+    
+    <div class="rea4-progress-box rea4-reveal-right">
+    <i class="fa-solid fa-chart-line"></i>
+    <p>Client Satisfaction Rate</p>
+    <div class="rea4-progress-bar">
+    <span data-progress="95"></span>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    </section>
+
+    <style>
+        
+
+.rea4-progress-section{
+padding:80px 8%;
+background:#f6f6f6;
+overflow:hidden;
+}
+
+.rea4-progress-container{
+display:flex;
+align-items:center;
+gap:60px;
+}
+
+/* IMAGE */
+.rea4-progress-img{
+flex:1;
+overflow:hidden;
+border-radius:12px;
+animation:rea4Float 4s ease-in-out infinite;
+transform:translateX(-80px);
+opacity:0;
+transition:1s;
+}
+
+.rea4-progress-img img{
+width:100%;
+height:420px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.rea4-progress-img:hover img{
+transform:scale(1.1);
+}
+
+/* CONTENT */
+.rea4-progress-content{
+flex:1;
+}
+
+.rea4-title{
+margin-bottom:40px;
+font-size:38px;
+}
+
+/* PROGRESS BOX */
+.rea4-progress-box{
+margin-bottom:25px;
+transform:translateX(80px);
+opacity:0;
+transition:1s;
+}
+
+.rea4-progress-box i{
+color:#d4af37;
+margin-right:10px;
+}
+
+/* BAR */
+.rea4-progress-bar{
+width:100%;
+height:10px;
+background:#ddd;
+border-radius:20px;
+margin-top:8px;
+overflow:hidden;
+}
+
+.rea4-progress-bar span{
+display:block;
+height:100%;
+width:0;
+background:#d4af37;
+transition:2s;
+}
+
+/* FLOAT */
+@keyframes rea4Float{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.04);}
+}
+
+.rea4-show{
+opacity:1;
+transform:translateX(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+.rea4-progress-container{
+flex-direction:column;
+}
+.rea4-progress-img img{
+height:300px;
+}
+}
+
+@media(max-width:600px){
+.rea4-title{
+font-size:26px;
+}
+}
+
+</style>
+   
+<script>
+
+    const rea4Img = document.querySelector('.rea4-progress-img');
+    const rea4Boxes = document.querySelectorAll('.rea4-progress-box');
+    
+    window.addEventListener('scroll',()=>{
+    
+    let win = window.innerHeight;
+    let imgTop = rea4Img.getBoundingClientRect().top;
+    
+    if(imgTop < win - 100){
+    rea4Img.classList.add('rea4-show');
+    }
+    
+    rea4Boxes.forEach((box,i)=>{
+    
+    let top = box.getBoundingClientRect().top;
+    
+    if(top < win - 100){
+    setTimeout(()=>{
+    box.classList.add('rea4-show');
+    
+    let bar = box.querySelector('span');
+    let progress = bar.getAttribute('data-progress');
+    bar.style.width = progress + "%";
+    
+    },i*300);
+    }
+    
+    });
+    
+    });
+    
+    </script>
+
+
+
+    <style>
+
+    .abx-parallax-section{
+        position:relative;
+        padding:120px 8%;
+        background:url("./rent.webp") center/cover fixed;
+        overflow:hidden;
+        }
+        
+        .abx-parallax-overlay{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.65);
+        top:0;
+        left:0;
+        }
+        
+        .abx-container{position:relative;z-index:2;}
+        
+        .abx-split-heading span{
+        display:inline-block;
+        font-size:52px;
+        color:white;
+        opacity:0;
+        transform:translateY(80px);
+        transition:0.6s;
+        }
+        
+        .abx-split-heading.active span{
+        opacity:1;
+        transform:translateY(0);
+        }
+        
+        .abx-gold-line{
+        width:0;
+        height:3px;
+        background:linear-gradient(90deg,gold,#fff,gold);
+        margin:20px 0 50px;
+        transition:1s;
+        }
+        
+        .abx-gold-line.active{width:160px;}
+        
+        .abx-flex{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        gap:60px;
+        }
+        
+        .abx-img-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+        flex:1;
+        }
+        
+        .abx-img{
+        width:100%;
+        object-fit:cover;
+        opacity:0;
+        transform:translateX(-120px);
+        filter:blur(10px);
+        animation:floatZoom 6s infinite ease-in-out;
+        transition:0.8s;
+        }
+        
+        .abx-img.active{
+        opacity:1;
+        transform:translateX(0);
+        filter:blur(0);
+        }
+        
+        .abx-square{height:220px;}
+        .abx-rect{height:320px;}
+        
+        @keyframes floatZoom{
+        0%,100%{transform:scale(1) translateY(0);}
+        50%{transform:scale(1.05) translateY(-10px);}
+        }
+        
+        .abx-content{flex:1;}
+        
+        .abx-point{
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-bottom:25px;
+        opacity:0;
+        transform:translateY(40px);
+        transition:0.6s;
+        }
+        
+        .abx-point.active{
+        opacity:1;
+        transform:translateY(0);
+        }
+        
+        .abx-point i{
+        color:gold;
+        font-size:34px;
+        }
+        
+        /* RESPONSIVE */
+        @media(max-width:992px){
+        .abx-flex{flex-direction:column;}
+        .abx-split-heading span{font-size:34px;}
+        }
+        </style>
+        <script>
+        const observer=new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+            if(entry.isIntersecting){
+            
+            document.querySelector(".abx-split-heading")
+            .classList.add("active");
+            
+            document.querySelector(".abx-gold-line")
+            .classList.add("active");
+            
+            document.querySelectorAll(".abx-img")
+            .forEach((img,i)=>{
+            setTimeout(()=>{
+            img.classList.add("active")
+            },i*300)
+            })
+            
+            document.querySelectorAll(".abx-point")
+            .forEach((p,i)=>{
+            setTimeout(()=>{
+            p.classList.add("active")
+            },i*400)
+            })
+            
+            }
+            })
+            },{threshold:0.3})
+            
+            observer.observe(document.querySelector(".abx-parallax-section"))
+            </script>
+     <!-- <footer> -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+   
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./index.html">Home </a></li>
+                    <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>       
+
+
+<script src="./script.js"></script>
+

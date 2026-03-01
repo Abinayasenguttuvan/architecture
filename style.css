@@ -22,7 +22,7 @@ ul { list-style: none; }
 .header {
     width: 100%;
     padding: 18px 40px;
-    background: #d4af37;
+    background:  linear-gradient(to top, rgb(232, 179, 44), transparent);
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -68,7 +68,7 @@ ul { list-style: none; }
     position: absolute;
     top: 38px;
     left: 0;
-    background: #12274d;
+    background: linear-gradient(to top, rgb(232, 179, 44), transparent);
     width: 160px;
     border-radius: 8px;
     padding: 10px 0;
@@ -100,7 +100,7 @@ li a{
 
 /* ================= FOOTER ================= */
 .footer {
-    background: #e2c461;
+    background: linear-gradient(to top, rgb(232, 179, 44), transparent);
     padding-top: 40px;
     color: black;
 }
