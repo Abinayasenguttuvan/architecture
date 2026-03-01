@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Architecture Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
 
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+
+                
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
@@ -12,6 +59,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    /* RESET */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
     :root {
       --bg-light: #ffffff;
       --text-light: #222222;
@@ -39,7 +94,7 @@
       justify-content:space-between;
       align-items:center;
       padding:20px 30px;
-      background-color: var(--primary);
+      /* background-color: var(--primary); */
       color:#fff;
     }
 
@@ -47,8 +102,8 @@
     .theme-switch{
       cursor:pointer;
       padding:8px 15px;
-      background-color:#fff;
-      color: var(--primary);
+      background-color: black;
+      color: goldenrod;
       border-radius:5px;
       font-weight:bold;
     }
@@ -136,7 +191,7 @@
 <body>
 
   <header>
-    <h1>Golden Architecture Dashboard</h1>
+    <!-- <h1>Golden Architecture Dashboard</h1> -->
     <div class="theme-switch" id="themeSwitch">Dark Mode</div>
   </header>
 
@@ -167,35 +222,123 @@
     <div class="card">
       <h2>Featured Projects</h2>
       <img src="./archi1.webp" alt="project1">
-      <img src="./archi2.webp" alt="project2">
+      <!-- <img src="./archi2.webp" alt="project2"> -->
       <p>Portfolio includes residential, commercial, and public projects worldwide.</p>
     </div>
 
     <div class="card">
       <h2>Awards & Recognition</h2>
-      <img src="./partner1.webp" alt="award1">
+      <img src="./award archi.webp" alt="award1">
       <p>Winner of international architecture and design awards for innovative projects.</p>
     </div>
 
     <div class="card">
       <h2>Our Team</h2>
-      <img src="https://images.unsplash.com/photo-1581091215366-2f5b887f5110?auto=format&fit=crop&w=800&q=80" alt="team1">
+      <img src="./sana.webp" alt="team1">
       <p>Meet our passionate architects, designers, and planners who bring ideas to life.</p>
     </div>
 
     <div class="card">
       <h2>Sustainability</h2>
-      <img src="https://images.unsplash.com/photo-1505842465776-3b2a0f51b1d0?auto=format&fit=crop&w=1200&q=80" alt="sustainability">
+      <img src="./archi6.webp" alt="sustainability">
       <p>Eco-friendly materials and energy-efficient designs integrated into all projects.</p>
     </div>
 
     <div class="card">
       <h2>Latest Updates</h2>
-      <img src="https://images.unsplash.com/photo-1529421303461-ec229c94397e?auto=format&fit=crop&w=1200&q=80" alt="news">
+      <img src="./archi5.webp" alt="news">
       <p>Stay updated on latest projects, industry news, and design trends.</p>
     </div>
   </section>
 
+  <Style>
+    /* ===== EXTRA SECTION GRID ===== */
+.extra-section{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+/* ===== CARD STYLE ===== */
+.extra-section .card{
+  background:#ffffff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition:all 0.4s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Dark Mode */
+body.dark .extra-section .card{
+  background:#2c2c2c;
+}
+
+/* ===== IMAGE SAME SIZE FOR ALL ===== */
+.extra-section .card img{
+  width:100%;
+  height:250px;          /* SAME HEIGHT FOR ALL */
+  object-fit:cover;      /* Prevent distortion */
+  display:block;
+  transition:transform 0.5s ease;
+}
+
+/* Hover Zoom Effect */
+.extra-section .card:hover img{
+  transform:scale(1.08);
+}
+
+/* ===== TEXT STYLING ===== */
+.extra-section .card h2{
+  font-size:1.2rem;
+  margin:18px 18px 8px;
+  color:#d4af37; /* Gold */
+}
+
+.extra-section .card p{
+  font-size:0.95rem;
+  line-height:1.6;
+  margin:0 18px 20px;
+  color:#555;
+}
+
+/* Dark mode text */
+body.dark .extra-section .card p{
+  color:#ddd;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet */
+@media (max-width:992px){
+  .extra-section .card img{
+    height:220px;
+  }
+}
+
+/* Mobile */
+@media (max-width:600px){
+  .extra-section{
+    grid-template-columns:1fr;
+  }
+
+  .extra-section .card img{
+    height:200px;
+  }
+
+  .extra-section .card h2{
+    font-size:1.1rem;
+  }
+
+  .extra-section .card p{
+    font-size:0.9rem;
+  }
+}
+  </Style>
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
@@ -264,5 +407,75 @@
     document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 
   </script>
+
+
+
+     <!-- <footer> -->
+      <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+   
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./index.html">Home </a></li>
+                    <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>       
+
+
+<script src="./script.js"></script>
+
+
 </body>
 </html>

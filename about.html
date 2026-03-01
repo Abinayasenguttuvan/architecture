@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    
+<body>
+    <style>
+
+        /* RESET */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* HERO SECTION */
+        .arch-hero{
+            width:100%;
+            height:100vh;
+            position:relative;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            padding:80px;
+            color:goldenrod;
+        }
+        
+        /* BACKGROUND SLIDER */
+        .arch-slider{
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            z-index:-2;
+        }
+        
+        .arch-slide{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background-size:cover;
+            background-position:center;
+            opacity:0;
+            transition:1.5s ease-in-out;
+        }
+        
+        /* Architecture Images */
+        .arch-slide:nth-child(1){
+        background-image:url("./archi6.webp");
+        }
+        .arch-slide:nth-child(2){
+        background-image:url("./archi5.webp");
+        }
+        .arch-slide:nth-child(3){
+        background-image:url("./archi2.webp");
+        }
+        
+        .arch-slide.active{
+            opacity:1;
+        }
+        
+        /* NETFLIX DARK GRADIENT OVERLAY */
+        .arch-hero::after{
+            content:"";
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            background:linear-gradient(
+                to right,
+                rgba(0,0,0,0.95) 10%,
+                rgba(0,0,0,0.85) 35%,
+                rgba(0,0,0,0.5) 60%,
+                rgba(0,0,0,0.2) 80%,
+                rgba(0,0,0,0.05) 100%
+            );
+            z-index:-1;
+        }
+        
+        /* CONTENT */
+        .arch-hero-content{
+            max-width:520px;
+            text-align:right;
+            animation:fadeUp 1.5s ease;
+        }
+        
+        .arch-hero-content h1{
+            font-size:52px;
+            font-weight:700;
+            margin-bottom:20px;
+            line-height:1.2;
+        }
+        
+        .arch-hero-content p{
+            margin-bottom:35px;
+            line-height:1.7;
+            font-size:20px;
+            color:#ddd;
+        }
+        
+        /* BUTTON */
+        .arch-btns button{
+            padding:14px 30px;
+            border:none;
+            background: goldenrod;
+            color:#fff;
+            cursor:pointer;
+            font-size:16px;
+            border-radius:4px;
+            transition:0.3s;
+        }
+        
+        .arch-btns button:hover{
+            background: rgb(234, 205, 134);
+            transform:scale(1.05);
+        }
+        
+        /* VIDEO MODAL */
+        .arch-video-modal{
+            position:fixed;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.85);
+            top:0;
+            left:0;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:999;
+        }
+        
+        .arch-video-box{
+            width:90%;
+            max-width:800px;
+            position:relative;
+        }
+        
+        .arch-video-box iframe{
+            width:100%;
+            height:450px;
+            border-radius:10px;
+        }
+        
+        #closeVideo{
+            position:absolute;
+            top:-40px;
+            right:0;
+            font-size:35px;
+            cursor:pointer;
+            color:#fff;
+        }
+        
+        /* ANIMATION */
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+        
+        /* RESPONSIVE */
+        
+        /* Tablet */
+        @media(max-width:992px){
+        
+        .arch-hero{
+            padding:50px;
+        }
+        
+        .arch-hero-content h1{
+            font-size:38px;
+        }
+        }
+        
+        /* Mobile */
+        @media(max-width:768px){
+        
+        .arch-hero{
+            justify-content:center;
+            text-align:center;
+            padding:25px;
+        }
+        
+        .arch-hero-content{
+            text-align:center;
+        }
+        
+        .arch-hero-content h1{
+            font-size:28px;
+        }
+        
+        .arch-video-box iframe{
+            height:250px;
+        }
+        }
+        
+        /* LOAD FROM BOTTOM ANIMATION */
+        
+        .lux-reveal{
+            opacity:0;
+            transform:translateY(60px);
+            animation:luxFadeUp 1.6s ease forwards;
+            animation-delay:0.5s;
+        }
+        
+        @keyframes luxFadeUp{
+            0%{
+                opacity:0;
+                transform:translateY(60px);
+            }
+            100%{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+        .lux-title{ animation-delay:0.2s; }
+        .lux-desc{ animation-delay:0.6s; }
+        .lux-btns{ animation-delay:1s; }
+        </style>
+        </head>
+        
+        <body>
+        
+        <section class="arch-hero">
+        
+            <div class="arch-slider">
+                <div class="arch-slide active"></div>
+                <div class="arch-slide"></div>
+                <div class="arch-slide"></div>
+            </div>
+        
+            <div class="arch-hero-content">
+        
+                <h1><span id="arch-text"></span></h1>
+        
+                <p>
+                    Experience bold architecture concepts inspired by iconic design movements 
+                    from cities like New York, Dubai and Tokyo. Discover smart, sustainable 
+                    and future-ready structures redefining modern living.
+                </p>
+        
+                <div class="arch-btns">
+                    <button id="watchBtn">▶ Watch Video</button>
+                </div>
+        
+            </div>
+        
+        </section>
+        
+        <!-- VIDEO POPUP -->
+        <div class="arch-video-modal" id="videoModal">
+            <div class="arch-video-box">
+                <span id="closeVideo">&times;</span>
+                <iframe id="archVideo"
+                    src="./real.mp4"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        
+        <script>
+        
+        /* AUTO BACKGROUND SLIDER */
+        let slides=document.querySelectorAll(".arch-slide");
+        let index=0;
+        
+        function autoSlide(){
+        slides.forEach(s=>s.classList.remove("active"));
+        slides[index].classList.add("active");
+        index=(index+1)%slides.length;
+        }
+        setInterval(autoSlide,4000);
+        
+        
+        /* TYPEWRITER EFFECT */
+        let textArray=[
+        "Modern Architecture",
+        "Luxury Urban Living",
+        "Sustainable Design",
+        "Future Smart Cities"
+        ];
+        
+        let count=0;
+        let i=0;
+        let currentText="";
+        let letter="";
+        
+        function typing(){
+        
+        if(count===textArray.length){
+        count=0;
+        }
+        
+        currentText=textArray[count];
+        letter=currentText.slice(0,++i);
+        
+        document.getElementById("arch-text").textContent=letter;
+        
+        if(letter.length===currentText.length){
+        count++;
+        i=0;
+        }
+        
+        setTimeout(typing,120);
+        }
+        typing();
+        
+        
+        /* VIDEO MODAL */
+        let btn=document.getElementById("watchBtn");
+        let modal=document.getElementById("videoModal");
+        let close=document.getElementById("closeVideo");
+        let iframe=document.getElementById("archVideo");
+        
+        btn.onclick=()=>{
+        modal.style.display="flex";
+        };
+        
+        close.onclick=()=>{
+        modal.style.display="none";
+        iframe.src=iframe.src; // stop video when closed
+        };
+        
+        </script>
+
+
+
+
+
+<section class="lxvmp-section">
+
+    <!-- LEFT IMAGES -->
+    <div class="lxvmp-images lxvmp-left-reveal">
+
+        <div class="lxvmp-img square">
+            <img src="./archi.webp">
+        </div>
+
+        <div class="lxvmp-img rectangle">
+            <img src="./archi1.webp">
+        </div>
+
+        <div class="lxvmp-img square">
+            <img src="./im3.webp">
+        </div>
+
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="lxvmp-content">
+
+        <h2 class="lxvmp-title">
+            Our Vision & Mission
+        </h2>
+
+        <div class="lxvmp-points">
+
+            <div class="lxvmp-point">
+                <i class="fa-solid fa-eye"></i>
+                <p>Create sustainable and intelligent architectural environments Lorem ipsum dolor sit amet, 
+                    consectetur adipisicing elit. Perspiciatis, voluptatum?.</p>
+            </div>
+
+            <div class="lxvmp-point">
+                <i class="fa-solid fa-leaf"></i>
+                <p>Promote eco-friendly design and green infrastructure Lorem ipsum dolor sit amet 
+                    consectetur adipisicing elit. Aliquam, delectus?</p>
+            </div>
+
+            <div class="lxvmp-point">
+                <i class="fa-solid fa-city"></i>
+                <p>Design urban spaces that enhance community living Lorem ipsum dolor sit amet consectetur 
+                    adipisicing elit. Voluptatem, ipsa?</p>
+            </div>
+
+            <div class="lxvmp-point">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p>Deliver innovative and futuristic structural solutions Lorem ipsum, dolor sit amet consectetur 
+                    adipisicing elit. Deleniti, asperiores!</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+
+    /* ===== SECTION ===== */
+    .lxvmp-section{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:70px;
+        padding:100px 8%;
+        background:black;
+        color:white;
+        overflow:hidden;
+    }
+    
+    /* ===== LEFT IMAGES ===== */
+    .lxvmp-images{
+        flex:1;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20px;
+        opacity:0;
+        transform:translateX(-100px);
+        transition:1s ease;
+    }
+    
+    .lxvmp-images.active{
+        opacity:1;
+        transform:translateX(0);
+    }
+    
+    .lxvmp-img{
+        overflow:hidden;
+        border-radius:12px;
+    }
+    
+    .lxvmp-img img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        filter:blur(4px);
+        transition:0.6s ease;
+    }
+    
+    .lxvmp-img:hover img{
+        filter:blur(0);
+        transform:scale(1.05);
+    }
+    
+    .square{ height:220px; }
+    .rectangle{ grid-column:span 2; height:260px; }
+    
+    /* ===== CONTENT ===== */
+    .lxvmp-content{
+        flex:1;
+    }
+    
+    /* ===== SPLIT TITLE ===== */
+    .lxvmp-title{
+        font-size:42px;
+        position:relative;
+        margin-bottom:60px;
+        overflow:hidden;
+    }
+    
+    /* Gold Animated Underline */
+    .lxvmp-title::after{
+        content:"";
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        width:0;
+        height:4px;
+        background:linear-gradient(90deg,#d4af37,#f9e27d,#d4af37);
+        animation:goldLine 2s forwards 1.2s;
+    }
+    
+    @keyframes goldLine{
+        to{ width:120px; }
+    }
+    
+    /* Split letter style */
+    .lxvmp-title span{
+        display:inline-block;
+        opacity:0;
+        transform:translateY(60px);
+    }
+    
+    /* ===== POINTS ===== */
+    .lxvmp-point{
+        display:flex;
+        gap:15px;
+        margin-bottom:25px;
+        opacity:0;
+        transform:translateY(40px);
+        transition:0.6s;
+    }
+    
+    .lxvmp-point.active{
+        opacity:1;
+        transform:translateY(0);
+    }
+    
+    .lxvmp-point i{
+        color:#d4af37;
+        font-size:20px;
+        margin-top:4px;
+    }
+    
+    .lxvmp-point p{
+        font-size:16px;
+        line-height:1.6;
+        color:white;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:992px){
+        .lxvmp-section{
+            flex-direction:column;
+        }
+        .lxvmp-title{ font-size:32px; }
+    }
+    
+    @media(max-width:600px){
+        .square{ height:180px; }
+        .rectangle{ height:200px; }
+        .lxvmp-title{ font-size:26px; }
+        .lxvmp-point p{ font-size:14px; }
+    }
+    
+    </style>
+    <script>
+
+        /* ===== SPLIT LETTER ANIMATION ===== */
+        const title = document.querySelector(".lxvmp-title");
+        const text = title.innerText;
+        title.innerHTML = "";
+        
+        text.split("").forEach((letter, i) => {
+            const span = document.createElement("span");
+            span.innerText = letter;
+            title.appendChild(span);
+        
+            setTimeout(() => {
+                span.style.opacity = "1";
+                span.style.transform = "translateY(0)";
+                span.style.transition = "0.6s ease";
+            }, i * 50);
+        });
+        
+        /* ===== SCROLL REVEAL ===== */
+        const images = document.querySelector(".lxvmp-images");
+        const points = document.querySelectorAll(".lxvmp-point");
+        
+        function revealSection(){
+            let windowHeight = window.innerHeight;
+        
+            if(images.getBoundingClientRect().top < windowHeight - 100){
+                images.classList.add("active");
+            }
+        
+            points.forEach((point, i) => {
+                if(point.getBoundingClientRect().top < windowHeight - 80){
+                    setTimeout(()=>{
+                        point.classList.add("active");
+                    }, i * 200);
+                }
+            });
+        }
+        
+        window.addEventListener("scroll", revealSection);
+        
+        </script>
+
+            <!-- TEAM SLIDER SECTION -->
+<section class="lx-team">
+
+    <h2 class="lx-team-title" style="color: white;">Meet Our Experts</h2>
+
+    <div class="lx-team-wrapper">
+
+        <button class="lx-arrow lx-prev">&#10094;</button>
+
+        <div class="lx-team-slider">
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./sana.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Arjun Mehta</h3>
+                <span>Chief Architect</span>
+            
+            </div>
+
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./nithiya.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Sophia Rao</h3>
+                <span>Interior Designer</span>
+            
+            </div>
+
+            
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./arjun.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Daniel Kumar</h3>
+                <span>Urban Planner</span>
+            </div>
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./sana.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Arjun Mehta</h3>
+                <span>Chief Architect</span>
+            
+            </div>
+
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./nithiya.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Sophia Rao</h3>
+                <span>Interior Designer</span>
+            
+            </div>
+
+            
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./arjun.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Daniel Kumar</h3>
+                <span>Urban Planner</span>
+            </div>
+
+
+
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./nithiya.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Sophia Rao</h3>
+                <span>Interior Designer</span>
+            
+            </div>
+
+            
+
+            <div class="lx-team-card lx-reveal">
+
+                <div class="lx-img">
+            
+                    <img src="./arjun.webp">
+            
+                    <!-- SOCIAL OVERLAY -->
+                    <div class="lx-social">
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+            
+                </div>
+            
+                <h3>Daniel Kumar</h3>
+                <span>Urban Planner</span>
+            </div>
+
+        </div>
+
+        <button class="lx-arrow lx-next">&#10095;</button>
+
+    </div>
+
+</section>
+
+<style>
+
+
+
+
+/* IMAGE WRAPPER */
+.lx-img{
+    position:relative;
+    overflow:hidden;
+    border-radius:6px;
+}
+
+/* IMAGE */
+.lx-img img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+/* ZOOM IMAGE */
+.lx-team-card:hover img{
+    transform:scale(1.1);
+}
+
+/* SOCIAL OVERLAY */
+.lx-social{
+    position:absolute;
+    bottom:-50px;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    background:rgba(0,0,0,0.6);
+    padding:10px;
+    transition:0.4s;
+}
+
+/* SHOW ON HOVER */
+.lx-team-card:hover .lx-social{
+    bottom:0;
+}
+
+/* ICON STYLE */
+.lx-social a{
+    width:35px;
+    height:35px;
+    background:#d4af37;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.lx-social a:hover{
+    background:#fff;
+}
+
+/* MOBILE FIX */
+@media(max-width:600px){
+    .lx-social{
+        bottom:0;
+    }
+}
+
+
+    .lx-team{
+        width:100%;
+        padding:80px 8%;
+        background:black;
+        text-align:center;
+    }
+    
+    .lx-team-title{
+        font-size:38px;
+        margin-bottom:50px;
+    }
+    
+    .lx-team-wrapper{
+        position:relative;
+        display:flex;
+        align-items:center;
+    }
+    
+    .lx-team-slider{
+        display:flex;
+        gap:30px;
+        overflow:hidden;
+        scroll-behavior:smooth;
+    }
+    
+    .lx-team-card{
+        min-width:280px;
+        background:#fff;
+        padding:20px;
+        border-radius:8px;
+        transition:0.4s;
+        opacity:0;
+        transform:translateY(60px);
+    }
+    
+    .lx-team-card.active{
+        opacity:1;
+        transform:translateY(0);
+    }
+    
+    .lx-img{
+        overflow:hidden;
+        border-radius:6px;
+    }
+    
+    .lx-img img{
+        width:100%;
+        height:260px;
+        object-fit:cover;
+        transition:0.5s;
+    }
+    
+    .lx-team-card:hover img{
+        transform:scale(1.1);
+    }
+    
+    .lx-team-card h3{
+        margin:15px 0 5px;
+    }
+    
+    .lx-team-card span{
+        font-size:14px;
+        color:#777;
+    }
+    
+    /* ARROWS */
+    .lx-arrow{
+        background:#d4af37;
+        border:none;
+        color:#000;
+        font-size:22px;
+        padding:10px 15px;
+        cursor:pointer;
+        position:absolute;
+        z-index:2;
+    }
+    
+    .lx-prev{ left:-10px; }
+    .lx-next{ right:-10px; }
+    
+    /* RESPONSIVE */
+    @media(max-width:992px){
+        .lx-team-card{ min-width:240px; }
+    }
+    
+    @media(max-width:600px){
+        .lx-team-slider{
+            gap:20px;
+        }
+        .lx-team-card{
+            min-width:220px;
+        }
+        .lx-team-title{
+            font-size:28px;
+        }
+    }
+    
+    </style>
+    <script>
+
+        const slider = document.querySelector(".lx-team-slider");
+        const next = document.querySelector(".lx-next");
+        const prev = document.querySelector(".lx-prev");
+        
+        next.addEventListener("click", () => {
+            slider.scrollBy({ left: 300, behavior: "smooth" });
+        });
+        
+        prev.addEventListener("click", () => {
+            slider.scrollBy({ left: -300, behavior: "smooth" });
+        });
+        
+        /* AUTO SLIDE */
+        setInterval(() => {
+            slider.scrollBy({ left: 300, behavior: "smooth" });
+        }, 4000);
+        
+        /* ONE BY ONE REVEAL */
+        const teamCards = document.querySelectorAll(".lx-reveal");
+        
+        function revealTeam(){
+            teamCards.forEach((card, i) => {
+                let windowHeight = window.innerHeight;
+                let elementTop = card.getBoundingClientRect().top;
+        
+                if(elementTop < windowHeight - 100){
+                    setTimeout(()=>{
+                        card.classList.add("active");
+                    }, i * 200);
+                }
+            });
+        }
+        
+        window.addEventListener("scroll", revealTeam);
+        
+        </script>
+        
+        
+        
+        
+<script src="script.js"></script>
+
+
+     <!-- <footer> -->
+        <footer class="footer">
+            <div class="footer-container">
+        
+                <!-- Logo / About -->
+                <div class="footer-box">
+                    <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+       
+                   
+                    <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+        
+                    <!-- Social Icons -->
+                    <div class="footer-social">
+                        <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="footer-box">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="./index.html">Home </a></li>
+                        <li><a href="./about.html">About</a></li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Address -->
+                <div class="footer-box">
+                    <h3>Our Address</h3>
+                    <p>
+                        MMR complex.<br>
+                        chinna tirupathi kovil street,<br>
+                        salem,Tamil nadu-636008<br>
+                        <!-- Bengaluru, Karnataka – 560066<br> -->
+                        India<br><br>
+        
+                        <strong>Phone:</strong> +91 98765 43210<br>
+                        <strong>Email:</strong> support@thestackly.com
+                    </p>
+                </div>
+        
+                <!-- Google Map -->
+                <div class="footer-box">
+                    <h3>Location</h3>
+                    <iframe 
+                    src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+        
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© 2025 stackly | All Rights Reserved</p>
+            </div>
+        </footer>       
+    
+    
+    <script src="./script.js"></script>
+    
+    
+</body>
+</html>

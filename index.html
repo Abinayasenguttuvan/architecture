@@ -1,9 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Architecture </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    
 <!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -13,346 +58,223 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 
 
 <style>
-
-/* RESET */
-*{
+    *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* HERO SECTION */
-.arch-hero{
-    width:100%;
-    height:100vh;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    padding:80px;
-    color:goldenrod;
-}
 
-/* BACKGROUND SLIDER */
-.arch-slider{
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:-2;
-}
-
-.arch-slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    opacity:0;
-    transition:1.5s ease-in-out;
-}
-
-/* Architecture Images */
-.arch-slide:nth-child(1){
-background-image:url("./archi6.webp");
-}
-.arch-slide:nth-child(2){
-background-image:url("./archi5.webp");
-}
-.arch-slide:nth-child(3){
-background-image:url("./archi2.webp");
-}
-
-.arch-slide.active{
-    opacity:1;
-}
-
-/* NETFLIX DARK GRADIENT OVERLAY */
-.arch-hero::after{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    background:linear-gradient(
-        to right,
-        rgba(0,0,0,0.95) 10%,
-        rgba(0,0,0,0.85) 35%,
-        rgba(0,0,0,0.5) 60%,
-        rgba(0,0,0,0.2) 80%,
-        rgba(0,0,0,0.05) 100%
-    );
-    z-index:-1;
-}
-
-/* CONTENT */
-.arch-hero-content{
-    max-width:520px;
-    text-align:right;
-    animation:fadeUp 1.5s ease;
-}
-
-.arch-hero-content h1{
-    font-size:52px;
-    font-weight:700;
-    margin-bottom:20px;
-    line-height:1.2;
-}
-
-.arch-hero-content p{
-    margin-bottom:35px;
-    line-height:1.7;
-    font-size:16px;
-    color:#ddd;
-}
-
-/* BUTTON */
-.arch-btns button{
-    padding:14px 30px;
-    border:none;
-    background: goldenrod;
-    color:#fff;
-    cursor:pointer;
-    font-size:16px;
-    border-radius:4px;
-    transition:0.3s;
-}
-
-.arch-btns button:hover{
-    background: rgb(234, 205, 134);
-    transform:scale(1.05);
-}
-
-/* VIDEO MODAL */
-.arch-video-modal{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.85);
-    top:0;
-    left:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:999;
-}
-
-.arch-video-box{
-    width:90%;
-    max-width:800px;
-    position:relative;
-}
-
-.arch-video-box iframe{
-    width:100%;
-    height:450px;
-    border-radius:10px;
-}
-
-#closeVideo{
-    position:absolute;
-    top:-40px;
-    right:0;
-    font-size:35px;
-    cursor:pointer;
-    color:#fff;
-}
-
-/* ANIMATION */
-@keyframes fadeUp{
-    from{
+    /* ====== SCOPED STUDIO INTRO ====== */
+    .lx-studio{
+        position:relative;
+        width:100%;
+        height:100vh;
+        overflow:hidden;
+    }
+    
+    /* VIDEO */
+    .lx-studio .lx-video{
+        position:absolute;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        z-index:1;
+    }
+    
+    /* OVERLAY */
+    .lx-studio .lx-overlay{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:linear-gradient(to right,rgba(0,0,0,0.85),rgba(0,0,0,0.3));
+        z-index:2;
+    }
+    
+    /* SMOKE */
+    .lx-studio .lx-smoke{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:url("./archi6.webp");
+        background-size:cover;
+        background-repeat:no-repeat;
         opacity:0;
-        transform:translateY(40px);
+        animation:lxSmoke 4s ease forwards;
+        z-index:3;
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+    
+    @keyframes lxSmoke{
+        0%{opacity:1; transform:scale(1.2);}
+        100%{opacity:0; transform:scale(1);}
     }
-}
-
-/* RESPONSIVE */
-
-/* Tablet */
-@media(max-width:992px){
-
-.arch-hero{
-    padding:50px;
-}
-
-.arch-hero-content h1{
-    font-size:38px;
-}
-}
-
-/* Mobile */
-@media(max-width:768px){
-
-.arch-hero{
-    justify-content:center;
-    text-align:center;
-    padding:25px;
-}
-
-.arch-hero-content{
-    text-align:center;
-}
-
-.arch-hero-content h1{
-    font-size:28px;
-}
-
-.arch-video-box iframe{
-    height:250px;
-}
-}
-
-/* LOAD FROM BOTTOM ANIMATION */
-
-.lux-reveal{
-    opacity:0;
-    transform:translateY(60px);
-    animation:luxFadeUp 1.6s ease forwards;
-    animation-delay:0.5s;
-}
-
-@keyframes luxFadeUp{
-    0%{
+    
+    /* CONTENT */
+    .lx-studio .lx-content{
+        position:relative;
+        z-index:4;
+        color:#fff;
+        top:50%;
+        transform:translateY(-50%);
+        padding:0 8%;
+        max-width:700px;
+    }
+    
+    /* TITLE */
+    .lx-studio .lx-title{
+        font-size:65px;
+        line-height:1.2;
+        opacity:0;
+        filter:blur(10px);
+        transform:translateY(60px);
+        animation:lxFade 1.2s forwards 1.5s;
+    }
+    
+    .lx-studio .lx-title span{
+        color:#d4af37;
+    }
+    
+    /* SUBTITLE */
+    .lx-studio .lx-subtitle{
+        margin:25px 0;
+        font-size:18px;
+        line-height:1.6;
+        opacity:0;
+        filter:blur(10px);
+        transform:translateY(60px);
+        animation:lxFade 1.2s forwards 2s;
+    }
+    
+    /* BUTTON */
+    .lx-studio .lx-btn{
+        display:inline-block;
+        padding:14px 35px;
+        background:#d4af37;
+        color:#000;
+        text-decoration:none;
+        font-weight:600;
+        border-radius:3px;
         opacity:0;
         transform:translateY(60px);
+        animation:lxFade 1.2s forwards 2.5s;
+        transition:0.4s;
     }
-    100%{
-        opacity:1;
-        transform:translateY(0);
+    
+    .lx-studio .lx-btn:hover{
+        background:#fff;
     }
-}
-.lux-title{ animation-delay:0.2s; }
-.lux-desc{ animation-delay:0.6s; }
-.lux-btns{ animation-delay:1s; }
-</style>
-</head>
+    
+    /* FADE */
+    @keyframes lxFade{
+        to{
+            opacity:1;
+            filter:blur(0);
+            transform:translateY(0);
+        }
+    }
+    
+    /* SCROLL */
+    .lx-studio .lx-scroll{
+        position:absolute;
+        bottom:30px;
+        left:50%;
+        transform:translateX(-50%);
+        z-index:4;
+    }
+    
+    .lx-studio .lx-scroll span{
+        width:22px;
+        height:38px;
+        border:2px solid #fff;
+        display:block;
+        border-radius:20px;
+        position:relative;
+    }
+    
+    .lx-studio .lx-scroll span::before{
+        content:'';
+        width:4px;
+        height:8px;
+        background:#fff;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        top:6px;
+        border-radius:50%;
+        animation:lxScroll 2s infinite;
+    }
+    
+    @keyframes lxScroll{
+        0%{top:6px; opacity:1;}
+        100%{top:20px; opacity:0;}
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:1200px){
+        .lx-studio .lx-title{font-size:55px;}
+    }
+    
+    @media (max-width:992px){
+        .lx-studio .lx-title{font-size:42px;}
+        .lx-studio .lx-subtitle{font-size:16px;}
+    }
+    
+    @media (max-width:600px){
+        .lx-studio .lx-content{
+            text-align:center;
+            padding:0 20px;
+        }
+        .lx-studio .lx-title{font-size:30px;}
+        .lx-studio .lx-subtitle{font-size:14px;}
+        .lx-studio .lx-btn{padding:12px 25px;}
+    }
+    
+    </style>
 
-<body>
+<section class="lx-studio">
 
-<section class="arch-hero">
+    <video autoplay muted loop playsinline class="lx-video">
+        <source src="./real.mp4" type="video/mp4">
+    </video>
 
-    <div class="arch-slider">
-        <div class="arch-slide active"></div>
-        <div class="arch-slide"></div>
-        <div class="arch-slide"></div>
-    </div>
+    <div class="lx-overlay"></div>
+    <div class="lx-smoke"></div>
 
-    <div class="arch-hero-content">
+    <div class="lx-content">
+        <h1 class="lx-title">
+            Designing <span>Future</span> Spaces
+        </h1>
 
-        <h1><span id="arch-text"></span></h1>
-
-        <p>
-            Experience bold architecture concepts inspired by iconic design movements 
-            from cities like New York, Dubai and Tokyo. Discover smart, sustainable 
-            and future-ready structures redefining modern living.
+        <p class="lx-subtitle">
+            We craft timeless architectural environments that merge innovation,
+            sustainability and modern elegance into iconic structures.
         </p>
 
-        <div class="arch-btns">
-            <button id="watchBtn">▶ Watch Video</button>
-        </div>
+        <a href="./404.html" class="lx-btn">Explore Studio</a>
+    </div>
 
+    <div class="lx-scroll">
+        <span></span>
     </div>
 
 </section>
 
-<!-- VIDEO POPUP -->
-<div class="arch-video-modal" id="videoModal">
-    <div class="arch-video-box">
-        <span id="closeVideo">&times;</span>
-        <iframe id="archVideo"
-            src="./real.mp4"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
-    </div>
-</div>
-
 <script>
-
-/* AUTO BACKGROUND SLIDER */
-let slides=document.querySelectorAll(".arch-slide");
-let index=0;
-
-function autoSlide(){
-slides.forEach(s=>s.classList.remove("active"));
-slides[index].classList.add("active");
-index=(index+1)%slides.length;
-}
-setInterval(autoSlide,4000);
-
-
-/* TYPEWRITER EFFECT */
-let textArray=[
-"Modern Architecture",
-"Luxury Urban Living",
-"Sustainable Design",
-"Future Smart Cities"
-];
-
-let count=0;
-let i=0;
-let currentText="";
-let letter="";
-
-function typing(){
-
-if(count===textArray.length){
-count=0;
-}
-
-currentText=textArray[count];
-letter=currentText.slice(0,++i);
-
-document.getElementById("arch-text").textContent=letter;
-
-if(letter.length===currentText.length){
-count++;
-i=0;
-}
-
-setTimeout(typing,120);
-}
-typing();
-
-
-/* VIDEO MODAL */
-let btn=document.getElementById("watchBtn");
-let modal=document.getElementById("videoModal");
-let close=document.getElementById("closeVideo");
-let iframe=document.getElementById("archVideo");
-
-btn.onclick=()=>{
-modal.style.display="flex";
-};
-
-close.onclick=()=>{
-modal.style.display="none";
-iframe.src=iframe.src; // stop video when closed
-};
-
-</script>
-
-
-
-
+    document.addEventListener("scroll",function(){
+        const video = document.querySelector(".lx-video");
+        if(video){
+            let scroll = window.scrollY;
+            video.style.transform = "scale("+(1 + scroll/4000)+")";
+        }
+    });
+    </script>
 
 
 <style>
 
 /* RESET */
 
-body{
-background:#0d0d0d;
-color:#fff;
-}
 
 /* ================= SECTION ================= */
 
@@ -591,9 +513,9 @@ OUR DESIGN PHILOSOPHY
 
     <div class="design-tag ds-animate ds-top">ARCHITECTURE EXCELLENCE</div>
 
-    <h2 class="design-title ds-animate ds-right">
-Creating Timeless & Luxury Spaces
-</h2>
+    <h2 class="design-title ds-animate ds-right" style="color: #ffffff;">
+        Creating Timeless & Luxury Spaces
+    </h2>
 
 <p class="design-desc ds-animate ds-left">
 We craft architectural environments that blend elegance,
@@ -606,7 +528,7 @@ every structure stands as a symbol of innovation and luxury.
     <div class="feature ds-animate ds-left">
 <i class="fa-solid fa-lightbulb"></i>
 <div>
-<h4>Long Term Vision Planning</h4>
+    <h4 style="color: goldenrod;">Long Term Vision Planning</h4>
 <p>Future-ready designs built with sustainability and innovation.</p>
 </div>
 </div>
@@ -614,7 +536,7 @@ every structure stands as a symbol of innovation and luxury.
 <div class="feature ds-animate ds-right">
 <i class="fa-solid fa-handshake"></i>
 <div>
-<h4>Relationship Focused</h4>
+<h4 style="color: goldenrod;">Relationship Focused</h4>
 <p>Collaborative partnerships that prioritize client vision.</p>
 </div>
 </div>
@@ -622,7 +544,7 @@ every structure stands as a symbol of innovation and luxury.
 <div class="feature ds-animate ds-left">
 <i class="fa-solid fa-chart-line"></i>
 <div>
-<h4>Outcome Oriented</h4>
+<h4 style="color: goldenrod;">Outcome Oriented</h4>
 <p>Delivering measurable excellence with precision and detail.</p>
 </div>
 </div>
@@ -1139,11 +1061,36 @@ fpObserver.observe(document.querySelector('.featured-projects'));
     border-radius: 15px;
     overflow: hidden;
 }
+/* SAME SIZE IMAGE CONTAINER */
+.luxx-img-wrapper {
+    position: relative;
+    margin-top: 25px;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 100%;
+    height: 240px;
+}
 
+/* FORCE ALL IMAGES SAME SIZE */
 .luxx-img-wrapper img {
     width: 100%;
-    border-radius: 15px;
-    transition: 0.4s;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    transition: 0.5s ease;
+}
+/* TABLET */
+@media(max-width: 992px){
+.luxx-img-wrapper{
+height: 220px;
+}
+}
+
+/* MOBILE */
+@media(max-width: 600px){
+.luxx-img-wrapper{
+height: 200px;
+}
 }
 
 .luxx-service-card:hover img {
@@ -1776,7 +1723,7 @@ window.addEventListener("load",ultraScrollLoad);
 <h3>Luxury Architecture</h3>
 <p>Premium architectural design combining innovation and timeless elegance.</p>
 <div class="luxx-img-wrapper">
-<img src="./beach.webp">
+<img src="./archi1.webp">
 </div>
 </div>
 
@@ -1786,7 +1733,7 @@ window.addEventListener("load",ultraScrollLoad);
 <h3>Interior Mastery</h3>
 <p>Elegant interior concepts crafted for comfort and sophistication.</p>
 <div class="luxx-img-wrapper">
-<img src="./interior.webp">
+<img src="./archi.webp">
 </div>
 </div>
 
@@ -2264,10 +2211,73 @@ entry.target.classList.add("active");
 partnerReveal.forEach(el=>partnerObserver.observe(el));
 
 </script>
-            
 
 
+     <!-- <footer> -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+   
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./index.html">Home </a></li>
+                    <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>       
 
+
+<script src="./script.js"></script>
 
 
 </body>

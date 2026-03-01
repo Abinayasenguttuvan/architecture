@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    
+<!-- ===================== ARC CINEMATIC PORTFOLIO ===================== -->
+
+<section class="arcpro-section">
+
+    <div class="arcpro-container">
+    
+    <h2 class="arcpro-title arcpro-animate arcpro-top">Our Portfolio</h2>
+    
+    <!-- FILTER -->
+    <div class="arcpro-filter arcpro-animate arcpro-bottom">
+    <button class="arcpro-btn active" data-filter="all">All</button>
+    <button class="arcpro-btn" data-filter="completed">Completed</button>
+    <button class="arcpro-btn" data-filter="ongoing">Ongoing</button>
+    <button class="arcpro-btn" data-filter="concept">Concept</button>
+    </div>
+    
+    <!-- GRID -->
+    <div class="arcpro-grid">
+    
+    <div class="arcpro-item completed arcpro-animate arcpro-left"
+    data-title="Luxury Beach Villa"
+    data-desc="A premium seaside residence designed with glass facade and sustainable architecture."
+    data-client="Private Client"
+    data-year="2025">
+    <img src="archi.webp">
+    <div class="arcpro-overlay">View Project</div>
+    </div>
+    
+    <div class="arcpro-item ongoing arcpro-animate arcpro-right"
+    data-title="Urban Glass Tower"
+    data-desc="High-rise commercial tower blending modern elegance and engineering precision."
+    data-client="Tech Corp"
+    data-year="2026">
+    <img src="./beach.webp">
+    <div class="arcpro-overlay">View Project</div>
+    </div>
+    
+    <div class="arcpro-item concept arcpro-animate arcpro-top"
+    data-title="Smart City Concept"
+    data-desc="Future ready sustainable urban planning concept."
+    data-client="Government Proposal"
+    data-year="2027">
+    <img src="./archi1.webp">
+    <div class="arcpro-overlay">View Project</div>
+    </div>
+    
+    </div>
+    </div>
+    
+    <!-- ================= PROJECT DETAIL POPUP ================= -->
+    
+    <div class="arcpro-popup">
+    <div class="arcpro-popup-content">
+    <span class="arcpro-close">&times;</span>
+    <div class="arcpro-popup-img"></div>
+    <div class="arcpro-popup-text">
+    <h3 id="arcproTitle"></h3>
+    <p id="arcproDesc"></p>
+    <p><strong>Client:</strong> <span id="arcproClient"></span></p>
+    <p><strong>Year:</strong> <span id="arcproYear"></span></p>
+    <button class="arcpro-gallery-btn">Open Gallery</button>
+    </div>
+    </div>
+    </div>
+    
+    <!-- ================= FULLSCREEN GALLERY ================= -->
+    
+    <div class="arcpro-gallery">
+    <span class="arcpro-gallery-close">&times;</span>
+    <img class="arcpro-gallery-img">
+    </div>
+    
+    </section>
+    
+    <style>
+        /* RESET */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+    
+    /* SECTION */
+    .arcpro-section{
+    padding:100px 20px;
+    background:#111;
+    color:#fff;
+    overflow:hidden;
+    }
+    
+    .arcpro-container{
+    max-width:1200px;
+    margin:auto;
+    }
+    
+    .arcpro-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:40px;
+    }
+    
+    /* FILTER */
+    .arcpro-filter{text-align:center;margin-bottom:40px;}
+    .arcpro-btn{
+    padding:12px 25px;
+    margin:10px;
+    border:1px solid gold;
+    background:transparent;
+    color:gold;
+    cursor:pointer;
+    transition:0.3s;
+    }
+    .arcpro-btn.active,
+    .arcpro-btn:hover{
+    background:gold;
+    color:#000;
+    }
+    
+    /* GRID */
+    .arcpro-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    }
+    
+    .arcpro-item{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    }
+    
+    .arcpro-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.6s;
+    }
+    
+    .arcpro-item:hover img{
+    transform:scale(1.1);
+    }
+    
+    .arcpro-overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:rgba(0,0,0,0.7);
+    color:#fff;
+    text-align:center;
+    padding:15px;
+    opacity:0;
+    transition:0.4s;
+    }
+    
+    .arcpro-item:hover .arcpro-overlay{
+    opacity:1;
+    }
+    
+    /* POPUP */
+    .arcpro-popup{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+    }
+    
+    .arcpro-popup-content{
+    background:#1a1a1a;
+    display:flex;
+    flex-wrap:wrap;
+    max-width:900px;
+    width:100%;
+    }
+    
+    .arcpro-popup-img{
+    flex:1;
+    min-height:300px;
+    background-size:cover;
+    background-position:center;
+    }
+    
+    .arcpro-popup-text{
+    flex:1;
+    padding:30px;
+    }
+    
+    .arcpro-close{
+    position:absolute;
+    top:20px;
+    right:40px;
+    font-size:35px;
+    cursor:pointer;
+    }
+    
+    /* GALLERY */
+    .arcpro-gallery{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:#000;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+    }
+    
+    .arcpro-gallery img{
+    width:90%;
+    max-width:1000px;
+    animation:arcFade 1s ease;
+    }
+    
+    .arcpro-gallery-close{
+    position:absolute;
+    top:20px;
+    right:40px;
+    font-size:40px;
+    color:#fff;
+    cursor:pointer;
+    }
+    
+    @keyframes arcFade{
+    from{opacity:0;transform:scale(1.1);}
+    to{opacity:1;transform:scale(1);}
+    }
+    
+    /* ANIMATIONS */
+    .arcpro-animate{
+    opacity:0;
+    transition:1s ease;
+    }
+    .arcpro-left{transform:translateX(-60px);}
+    .arcpro-right{transform:translateX(60px);}
+    .arcpro-top{transform:translateY(-60px);}
+    .arcpro-bottom{transform:translateY(60px);}
+    
+    .arcpro-show{
+    opacity:1 !important;
+    transform:translate(0) !important;
+    }
+    
+    /* RESPONSIVE */
+    @media(max-width:768px){
+    .arcpro-popup-content{flex-direction:column;}
+    .arcpro-title{font-size:28px;}
+    }
+    
+    </style>
+    
+    <script>
+    
+    /* FILTER */
+    const btns=document.querySelectorAll(".arcpro-btn");
+    const items=document.querySelectorAll(".arcpro-item");
+    
+    btns.forEach(btn=>{
+    btn.onclick=()=>{
+    btns.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    let filter=btn.dataset.filter;
+    items.forEach(item=>{
+    item.style.display=
+    filter==="all"||item.classList.contains(filter)
+    ?"block":"none";
+    });
+    };
+    });
+    
+    /* POPUP */
+    const popup=document.querySelector(".arcpro-popup");
+    const popupImg=document.querySelector(".arcpro-popup-img");
+    
+    items.forEach(item=>{
+    item.onclick=()=>{
+    popup.style.display="flex";
+    popupImg.style.backgroundImage="url("+item.querySelector("img").src+")";
+    document.getElementById("arcproTitle").innerText=item.dataset.title;
+    document.getElementById("arcproDesc").innerText=item.dataset.desc;
+    document.getElementById("arcproClient").innerText=item.dataset.client;
+    document.getElementById("arcproYear").innerText=item.dataset.year;
+    };
+    });
+    
+    document.querySelector(".arcpro-close").onclick=()=>{
+    popup.style.display="none";
+    };
+    
+    /* FULLSCREEN GALLERY */
+    const gallery=document.querySelector(".arcpro-gallery");
+    const galleryImg=document.querySelector(".arcpro-gallery-img");
+    
+    document.querySelector(".arcpro-gallery-btn").onclick=()=>{
+    gallery.style.display="flex";
+    galleryImg.src=popupImg.style.backgroundImage.slice(5,-2);
+    };
+    
+    document.querySelector(".arcpro-gallery-close").onclick=()=>{
+    gallery.style.display="none";
+    };
+    
+    /* SCROLL ANIMATION */
+    const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+    if(entry.isIntersecting){
+    entry.target.classList.add("arcpro-show");
+    }
+    });
+    },{threshold:0.2});
+    
+    document.querySelectorAll(".arcpro-animate").forEach(el=>{
+    observer.observe(el);
+    });
+    
+    </script>
+
+<section class="luxba-section">
+
+    <h2 class="luxba-heading">
+    Architectural Transformation
+    </h2>
+    
+    <div class="luxba-wrapper">
+    
+    <!-- PROJECT 1 -->
+    <div class="luxba-box luxba-reveal">
+    
+    <div class="luxba-container">
+    
+    <img src="./archi.webp" class="luxba-img">
+    
+    <div class="luxba-after">
+    <img src="./archi1.webp" class="luxba-img">
+    </div>
+    
+    <input type="range" min="0" max="100" value="50" class="luxba-slider">
+    
+    </div>
+    
+    <div class="luxba-content">
+    <h3 class="luxba-title">Modern Villa Renovation</h3>
+    <p class="luxba-line">Complete structural redesign with open-space planning.</p>
+    <p class="luxba-line">Natural light optimization through panoramic glazing.</p>
+    <p class="luxba-line">Luxury facade transformation with stone & wood fusion.</p>
+    </div>
+    
+    </div>
+    
+    
+    <!-- PROJECT 2 -->
+    <div class="luxba-box luxba-reveal">
+    
+    <div class="luxba-container">
+    
+    <img src="./archi1.webp" class="luxba-img">
+    
+    <div class="luxba-after">
+    <img src="./archi2.webp" class="luxba-img">
+    </div>
+    
+    <input type="range" min="0" max="100" value="50" class="luxba-slider">
+    
+    </div>
+    
+    <div class="luxba-content">
+    <h3 class="luxba-title">Urban House Upgrade</h3>
+    <p class="luxba-line">Facade modernization with glass architecture.</p>
+    <p class="luxba-line">Energy efficient exterior redesign.</p>
+    <p class="luxba-line">Landscape integration for seamless living.</p>
+    </div>
+    
+    </div>
+    
+    
+    <!-- PROJECT 3 -->
+    <div class="luxba-box luxba-reveal">
+    
+    <div class="luxba-container">
+    
+    <img src="./beach.webp" class="luxba-img">
+    
+    <div class="luxba-after">
+    <img src="./archi6.webp" class="luxba-img">
+    </div>
+    
+    <input type="range" min="0" max="100" value="50" class="luxba-slider">
+    
+    </div>
+    
+    <div class="luxba-content">
+    <h3 class="luxba-title">Luxury Interior Makeover</h3>
+    <p class="luxba-line">Premium marble flooring installation.</p>
+    <p class="luxba-line">Smart lighting & ceiling redesign.</p>
+    <p class="luxba-line">Elegant contemporary styling.</p>
+    </div>
+    
+    </div>
+    
+    </div>
+    </section>
+
+    <style>
+
+    /* SECTION */
+.luxba-section{
+padding:100px 5%;
+background:#0e0e0e;
+color:#fff;
+overflow:hidden;
+}
+
+.luxba-heading{
+text-align:center;
+font-size:42px;
+margin-bottom:70px;
+background:linear-gradient(90deg,gold,#fff,gold);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* GRID */
+.luxba-wrapper{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:50px;
+}
+
+/* BOX */
+.luxba-box{
+opacity:0;
+transform:translateY(80px);
+transition:1s ease;
+}
+
+.luxba-box.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* IMAGE CONTAINER */
+.luxba-container{
+position:relative;
+overflow:hidden;
+border-radius:8px;
+}
+
+.luxba-img{
+width:100%;
+height:420px;
+object-fit:cover;
+transition:1s;
+}
+
+.luxba-container:hover .luxba-img{
+transform:scale(1.08);
+}
+
+.luxba-after{
+position:absolute;
+top:0;
+left:0;
+width:50%;
+height:100%;
+overflow:hidden;
+}
+
+/* SLIDER */
+.luxba-slider{
+position:absolute;
+width:100%;
+bottom:15px;
+left:0;
+z-index:5;
+}
+
+/* CONTENT */
+.luxba-content{
+margin-top:25px;
+}
+
+.luxba-title{
+font-size:22px;
+margin-bottom:15px;
+color:gold;
+}
+
+.luxba-line{
+opacity:0;
+transform:translateX(-40px);
+transition:0.6s;
+margin-bottom:8px;
+}
+
+.luxba-line.show{
+opacity:1;
+transform:translateX(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* LAPTOP */
+@media(max-width:1199px){
+.luxba-wrapper{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* TABLET */
+@media(max-width:991px){
+.luxba-wrapper{
+grid-template-columns:1fr;
+}
+.luxba-img{
+height:350px;
+}
+}
+
+/* MOBILE */
+@media(max-width:767px){
+.luxba-heading{
+font-size:28px;
+}
+.luxba-img{
+height:250px;
+}
+.luxba-title{
+font-size:18px;
+}
+}
+</style>
+<script>
+
+    // SCROLL REVEAL
+    let boxes=document.querySelectorAll(".luxba-reveal");
+    
+    window.addEventListener("scroll",()=>{
+    boxes.forEach((box,i)=>{
+    let top=box.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+    setTimeout(()=>{
+    box.classList.add("show");
+    },i*300);
+    }
+    });
+    });
+    
+    
+    // AUTO SLIDER + TEXT LOAD
+    let containers=document.querySelectorAll(".luxba-container");
+    
+    containers.forEach((box)=>{
+    let after=box.querySelector(".luxba-after");
+    let slider=box.querySelector(".luxba-slider");
+    let contentLines=box.parentElement.querySelectorAll(".luxba-line");
+    
+    let value=50;
+    let direction=1;
+    
+    setInterval(()=>{
+    value+=direction;
+    if(value>=100 || value<=0){
+    direction*=-1;
+    
+    /* TEXT LOAD LINE BY LINE */
+    contentLines.forEach((line,index)=>{
+    setTimeout(()=>{
+    line.classList.add("show");
+    },index*300);
+    });
+    }
+    
+    after.style.width=value+"%";
+    slider.value=value;
+    
+    },40);
+    
+    /* MANUAL DRAG */
+    slider.addEventListener("input",()=>{
+    after.style.width=slider.value+"%";
+    });
+    
+    });
+    
+    </script>
+
+
+<section class="anpt-section">
+
+    <h2 class="anpt-heading">Project Execution Timeline</h2>
+    
+    <div class="anpt-wrapper">
+    
+    <div class="anpt-line"></div>
+    
+    <div class="anpt-card anpt-reveal">
+    <div class="anpt-icon">📍</div>
+    <h4>Site Analysis</h4>
+    <p>Understanding land orientation & zoning.</p>
+    </div>
+    
+    <div class="anpt-card anpt-reveal">
+    <div class="anpt-icon">✏️</div>
+    <h4>Concept Design</h4>
+    <p>Initial planning & spatial layout.</p>
+    </div>
+    
+    <div class="anpt-card anpt-reveal">
+    <div class="anpt-icon">🧱</div>
+    <h4>Structural Planning</h4>
+    <p>Engineering framework creation.</p>
+    </div>
+    
+    <div class="anpt-card anpt-reveal">
+    <div class="anpt-icon">🛠️</div>
+    <h4>Execution</h4>
+    <p>On-site development.</p>
+    </div>
+    
+    <div class="anpt-card anpt-reveal">
+    <div class="anpt-icon">🏁</div>
+    <h4>Project Delivery</h4>
+    <p>Final finishing & handover.</p>
+    </div>
+    
+    </div>
+    
+    </section>
+
+
+    <style>
+
+
+    /* SECTION */
+.anpt-section{
+padding:100px 5%;
+background:#0e0e0e;
+color:#fff;
+text-align:center;
+overflow:hidden;
+}
+
+.anpt-heading{
+font-size:40px;
+margin-bottom:80px;
+color:gold;
+}
+
+/* WRAPPER */
+.anpt-wrapper{
+position:relative;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:40px;
+}
+
+/* ANIMATED LINE */
+.anpt-line{
+position:absolute;
+top:50%;
+left:0;
+width:100%;
+height:4px;
+background:linear-gradient(90deg,transparent,gold,transparent);
+animation:lineMove 4s linear infinite;
+z-index:0;
+}
+
+@keyframes lineMove{
+0%{background-position:-200px;}
+100%{background-position:200px;}
+}
+
+/* CARD */
+.anpt-card{
+position:relative;
+z-index:2;
+flex:1 1 180px;
+background:#1a1a1a;
+padding:30px;
+border-radius:8px;
+opacity:0;
+transform:translateY(80px) scale(0.8);
+transition:1s;
+animation:floatZoom 5s ease-in-out infinite;
+}
+
+.anpt-card.show{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.anpt-icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+/* FLOAT ZOOM */
+@keyframes floatZoom{
+0%{transform:translateY(0) scale(1);}
+50%{transform:translateY(-12px) scale(1.05);}
+100%{transform:translateY(0) scale(1);}
+}
+
+/* HOVER */
+.anpt-card:hover{
+transform:translateY(-10px) scale(1.08);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* LAPTOP */
+@media(max-width:1200px){
+.anpt-wrapper{
+justify-content:center;
+}
+}
+
+/* TABLET */
+@media(max-width:992px){
+
+.anpt-line{
+display:none;
+}
+
+.anpt-wrapper{
+flex-direction:column;
+}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.anpt-heading{
+font-size:26px;
+}
+}
+
+</style>
+
+<script>
+
+    let timeline=document.querySelectorAll(".anpt-card");
+    
+    window.addEventListener("scroll",()=>{
+    timeline.forEach((el,i)=>{
+    let top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+    setTimeout(()=>{
+    el.classList.add("show");
+    },i*250);
+    }
+    });
+    });
+    
+    </script>
+
+
+
+<section class="upsg-section">
+
+    <h2 class="upsg-heading">Sustainable Features</h2>
+    
+    <div class="upsg-grid">
+    
+    <div class="upsg-card upsg-reveal">
+    <div class="upsg-icon">🌞</div>
+    <h4>Solar Panels</h4>
+    <p>Renewable energy system.</p>
+    </div>
+    
+    <div class="upsg-card upsg-reveal">
+    <div class="upsg-icon">💧</div>
+    <h4>Rainwater Harvesting</h4>
+    <p>Efficient water reuse.</p>
+    </div>
+    
+    <div class="upsg-card upsg-reveal">
+    <div class="upsg-icon">🌬️</div>
+    <h4>Natural Ventilation</h4>
+    <p>Cross airflow planning.</p>
+    </div>
+    
+    <div class="upsg-card upsg-reveal">
+    <div class="upsg-icon">💡</div>
+    <h4>LED Lighting</h4>
+    <p>Low energy lighting.</p>
+    </div>
+    
+    </div>
+    
+    </section>
+
+
+    <style>
+        .upsg-section{
+padding:100px 5%;
+background:#111;
+text-align:center;
+color:#fff;
+}
+
+.upsg-heading{
+font-size:40px;
+margin-bottom:60px;
+color:gold;
+}
+
+.upsg-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.upsg-card{
+background:#1c1c1c;
+padding:30px;
+border-radius:8px;
+opacity:0;
+transform:scale(0.8);
+transition:1s;
+animation:floatZoom2 6s ease-in-out infinite;
+}
+
+.upsg-card.show{
+opacity:1;
+transform:scale(1);
+}
+
+.upsg-icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+/* FLOAT + ZOOM */
+@keyframes floatZoom2{
+0%{transform:translateY(0) scale(1);}
+50%{transform:translateY(-12px) scale(1.06);}
+100%{transform:translateY(0) scale(1);}
+}
+
+/* Hover */
+.upsg-card:hover{
+transform:translateY(-10px) scale(1.08);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+.upsg-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* Mobile */
+@media(max-width:600px){
+.upsg-grid{
+grid-template-columns:1fr;
+}
+.upsg-heading{font-size:26px;}
+}
+    </style>
+
+<script>
+
+    let revealEls=document.querySelectorAll(".uppt-card,.upsg-card");
+    
+    window.addEventListener("scroll",()=>{
+    revealEls.forEach((el,i)=>{
+    let top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+    setTimeout(()=>{
+    el.classList.add("show");
+    },i*250);
+    }
+    });
+    });
+    
+    </script>
+
+
+     <!-- <footer> -->
+        <footer class="footer">
+            <div class="footer-container">
+        
+                <!-- Logo / About -->
+                <div class="footer-box">
+                    <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+       
+                   
+                    <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+        
+                    <!-- Social Icons -->
+                    <div class="footer-social">
+                        <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="footer-box">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="./index.html">Home </a></li>
+                        <li><a href="./about.html">About</a></li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Address -->
+                <div class="footer-box">
+                    <h3>Our Address</h3>
+                    <p>
+                        MMR complex.<br>
+                        chinna tirupathi kovil street,<br>
+                        salem,Tamil nadu-636008<br>
+                        <!-- Bengaluru, Karnataka – 560066<br> -->
+                        India<br><br>
+        
+                        <strong>Phone:</strong> +91 98765 43210<br>
+                        <strong>Email:</strong> support@thestackly.com
+                    </p>
+                </div>
+        
+                <!-- Google Map -->
+                <div class="footer-box">
+                    <h3>Location</h3>
+                    <iframe 
+                    src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+        
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© 2025 stackly | All Rights Reserved</p>
+            </div>
+        </footer>       
+    
+    
+    <script src="./script.js"></script>
+    
+    
