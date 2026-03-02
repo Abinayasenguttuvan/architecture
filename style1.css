@@ -82,7 +82,7 @@
         }
         
         .dropdown-content li a:hover {
-            background: #0e1c33;
+            background: linear-gradient(to top, #4e361a, transparent);      
         }
         
         /* Toggle */
@@ -186,7 +186,7 @@
             .nav-links {
                 display: none;
                 flex-direction: column;
-                background: #0b1f3a;
+                background: linear-gradient(to top, #4e361a, transparent);      
                 position: absolute;
                 top: 70px;
                 right: 20px;
@@ -216,4 +216,4 @@
         
         
         
-            </style>
+           

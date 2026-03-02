@@ -39,6 +39,7 @@ ul { list-style: none; }
 }
 
 .nav-links {
+    
     display: flex;
     gap: 25px;
 }
@@ -82,7 +83,7 @@ ul { list-style: none; }
 }
 
 .dropdown-content li a:hover {
-    background: #0e1c33;
+    background: linear-gradient(to top, rgb(232, 179, 44), transparent);
 }
 
 /* Toggle */
@@ -186,7 +187,7 @@ li a{
     .nav-links {
         display: none;
         flex-direction: column;
-        background: #0b1f3a;
+        background:  linear-gradient(to top, rgb(232, 179, 44), transparent);;
         position: absolute;
         top: 70px;
         right: 20px;
@@ -216,4 +217,4 @@ li a{
 
 
 
-    </style>
+    
