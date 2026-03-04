@@ -12,7 +12,7 @@
 <body>
     <!-- ================= HEADER ================= -->
     <header class="header">
-        <a href="index.html">   
+        <a href="home2.html">   
             <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
           </a> 
         <!-- div class="logo">Tech<span>Solutions</span></div> -->
@@ -214,7 +214,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 }
 
 /* LEFT IMAGE */
-.about-image{
+/* .about-image{
   flex:1;
   min-width:300px;
   position:relative;
@@ -238,6 +238,94 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 
 .slide.active{
   opacity:1;
+} */
+
+.about-image {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-slider {
+  width: 100%;
+  position: relative;
+}
+
+.image-slider .slide {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: none;
+  transition: 0.4s ease-in-out;
+}
+
+.image-slider .slide.active {
+  display: block;
+}
+
+/* ================= DESKTOP (1200px and above) ================= */
+@media (min-width: 1200px) {
+
+.about-image {
+  max-width: 600px;
+}
+
+.image-slider .slide {
+  height: 500px;
+}
+
+}
+
+
+/* ================= LAPTOP (992px - 1199px) ================= */
+@media (max-width: 1199px) and (min-width: 992px) {
+
+.about-image {
+  max-width: 500px;
+}
+
+.image-slider .slide {
+  height: 420px;
+}
+
+}
+
+
+/* ================= TABLET (768px - 991px) ================= */
+@media (max-width: 991px) and (min-width: 768px) {
+
+.about-image {
+  max-width: 100%;
+}
+
+.image-slider .slide {
+  height: 380px;
+}
+
+}
+
+
+/* ================= MOBILE (below 768px) ================= */
+@media (max-width: 767px) {
+
+.about-image {
+  width: 100%;
+}
+
+.image-slider .slide {
+  height: 260px;
+}
+
+}
+
+
+/* ================= SMALL MOBILE (below 480px) ================= */
+@media (max-width: 480px) {
+
+.image-slider .slide {
+  height: 220px;
+}
+
 }
 
 /* RIGHT CONTENT */
@@ -1066,12 +1154,82 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 /* ----- */
 
 
-/* ===== INVESTMENT SECTION ===== */
+/* ===== INVESTMENT SECTION ===== *//* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+
+.investpro-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.investpro-container {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.investpro-heading {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.investpro-divider {
+  width: 60px;
+  margin: 15px auto;
+}
+
+.investpro-subtext {
+  font-size: 14px;
+  padding: 0 10px;
+  margin-bottom: 25px;
+}
+
+.investpro-form {
+  width: 100%;
+}
+
+.investpro-input-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.investpro-input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.investpro-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+}
+
+.investpro-error {
+  font-size: 13px;
+  margin-top: 10px;
+}
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width: 480px) {
+
+.investpro-heading {
+  font-size: 20px;
+}
+
+.investpro-subtext {
+  font-size: 13px;
+}
+
+.investpro-btn {
+  font-size: 14px;
+}
+} 
 .investpro-section {
   position: relative;
   padding: 120px 8%;
   text-align: center;
-  color: black;
+  color: white;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -1288,7 +1446,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       </h2>
   
       <div class="estate-slider-control">
-        <label>Animation Speed</label>
+        
         <input type="range" min="1" max="10" value="5" class="estate-speed-slider">
       </div>
   
