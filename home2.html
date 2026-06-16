@@ -1607,6 +1607,94 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   
   </section>
 
+  <style>
+    /* ================= STACKLY IMAGE GRID ================= */
+
+.stkGalleryWrap{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    width:100%;
+    max-width:600px;
+    margin:auto;
+    padding:15px;
+}
+
+.stkGalleryImg{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    display:block;
+    transition:0.4s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.stkGalleryImg:hover{
+    transform:scale(1.03);
+}
+
+/* Optional Individual Styling */
+
+.stkImgOne{
+    border-top-left-radius:25px;
+}
+
+.stkImgTwo{
+    border-top-right-radius:25px;
+}
+
+.stkImgThree{
+    border-bottom-left-radius:25px;
+}
+
+.stkImgFour{
+    border-bottom-right-radius:25px;
+}
+
+/* ================= LAPTOP ================= */
+
+@media (max-width:1200px){
+
+    .stkGalleryImg{
+        height:200px;
+    }
+
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:768px){
+
+    .stkGalleryWrap{
+        gap:12px;
+    }
+
+    .stkGalleryImg{
+        height:180px;
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:480px){
+
+    .stkGalleryWrap{
+        grid-template-columns:1fr;
+        gap:10px;
+        padding:10px;
+    }
+
+    .stkGalleryImg{
+        height:220px;
+        border-radius:15px;
+    }
+
+}
+  </style>
+
+
 
 
   <!-- ===== PLEXIFY VALUE SECTION START ===== -->
@@ -1621,13 +1709,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       <div class="plexify-content-wrapper">
   
         <!-- LEFT SIDE IMAGES -->
-        <div class="plexify-image-grid">
-          <img src="./ab1.webp" class="plexify-img img-one" alt="">
-          <img src="./im2.webp" class="plexify-img img-two" alt="">
-          <img src="./im3.webp" class="plexify-img img-three" alt="">
-          <img src="./im4.webp" class="plexify-img img-four" alt="">
-        </div>
-  
+        <div class="stkGalleryWrap">
+
+          <img src="./ab1.webp" class="stkGalleryImg stkImgOne" alt="Image 1">
+      
+          <img src="./im2.webp" class="stkGalleryImg stkImgTwo" alt="Image 2">
+      
+          <img src="./im3.webp" class="stkGalleryImg stkImgThree" alt="Image 3">
+      
+          <img src="./im4.webp" class="stkGalleryImg stkImgFour" alt="Image 4">
+      
+      </div>
         <!-- RIGHT SIDE CONTENT -->
         <div class="plexify-text-content">
   
@@ -1731,43 +1823,195 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 
 
   <!-- ===== INVESTMENT CONSULTATION SECTION START ===== -->
-<section class="investpro-section">
+  <section class="stkConsultSection">
 
-    <div class="investpro-overlay"></div>
-  
-    <div class="investpro-container">
-  
-      <h2 class="investpro-heading">
-        Let The Experts Make The Right Investment
-      </h2>
-  
-      <div class="investpro-divider"></div>
-  
-      <p class="investpro-subtext">
-        Contact our team for consultation and get expert guidance to maximize your returns.
-      </p>
-  
-      <form class="investpro-form" id="investproForm">
-  
-        <div class="investpro-input-group">
-          <input type="text" id="investproName" placeholder="Your Name">
-        </div>
-  
-        <div class="investpro-input-group">
-          <input type="email" id="investproEmail" placeholder="Your Email">
-        </div>
-  
-        <button type="submit" class="investpro-btn">
-          Get Consultation →
-        </button>
-  
-        <p class="investpro-error" id="investproError"></p>
-  
-      </form>
-  
+    <div class="stkConsultContainer">
+
+        <h2 class="stkConsultHeading">
+            Let The Experts Make The Right Investment
+        </h2>
+
+        <div class="stkConsultDivider"></div>
+
+        <p class="stkConsultText">
+            Contact our team for consultation and get expert guidance to maximize your returns.
+        </p>
+
+        <form class="stkConsultForm" id="stkConsultForm">
+
+            <div class="stkConsultInputWrap">
+                <input type="text" id="stkConsultName" placeholder="Your Name">
+            </div>
+
+            <div class="stkConsultInputWrap">
+                <input type="email" id="stkConsultEmail" placeholder="Your Email">
+            </div>
+
+            <button type="submit" class="stkConsultBtn">
+                Get Consultation →
+            </button>
+
+            <p class="stkConsultError" id="stkConsultError"></p>
+
+        </form>
+
     </div>
+
+</section>
+
+<style>
+  /* ================= CONSULTATION SECTION ================= */
+
+.stkConsultSection{
+    width:100%;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#4e361a,#dfd0bf);
+}
+
+.stkConsultContainer{
+    max-width:700px;
+    margin:auto;
+    background:#ffffff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.stkConsultHeading{
+    text-align:center;
+    font-size:34px;
+    color:#111827;
+    margin-bottom:15px;
+}
+
+.stkConsultDivider{
+    width:80px;
+    height:4px;
+    background:#4e361a;
+    margin:0 auto 20px;
+    border-radius:50px;
+}
+
+.stkConsultText{
+    text-align:center;
+    color:#6b7280;
+    margin-bottom:30px;
+    line-height:1.7;
+}
+
+.stkConsultForm{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.stkConsultInputWrap input{
+    width:100%;
+    padding:15px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+.stkConsultInputWrap input:focus{
+    border-color:#4e361a;
+}
+
+.stkConsultBtn{
+    border:none;
+    background:#4e361a;
+    color:#fff;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.stkConsultBtn:hover{
+    background:#4e361a;
+}
+
+.stkConsultError{
+    text-align:center;
+    color:red;
+    font-size:14px;
+    margin-top:5px;
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:768px){
+
+    .stkConsultContainer{
+        padding:30px 20px;
+    }
+
+    .stkConsultHeading{
+        font-size:28px;
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+
+    .stkConsultSection{
+        padding:60px 15px;
+    }
+
+    .stkConsultContainer{
+        padding:25px 15px;
+    }
+
+    .stkConsultHeading{
+        font-size:22px;
+    }
+
+    .stkConsultText{
+        font-size:14px;
+    }
+
+    .stkConsultBtn{
+        width:100%;
+    }
+
+}
+</style>
+<script>
+
+  document.getElementById("stkConsultForm").addEventListener("submit", function(e){
   
-  </section>
+      e.preventDefault();
+  
+      let name = document.getElementById("stkConsultName").value.trim();
+      let email = document.getElementById("stkConsultEmail").value.trim();
+      let error = document.getElementById("stkConsultError");
+  
+      error.innerText = "";
+  
+      let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+      if(name === "" || email === ""){
+          error.innerText = "Please fill details";
+          return;
+      }
+  
+      if(!emailPattern.test(email)){
+          error.innerText = "Please fill details";
+          return;
+      }
+  
+      window.location.href = "./404.html";
+  
+  });
+  
+  </script>
+
+
   <!-- ===== INVESTMENT CONSULTATION SECTION END ===== -->
   
   

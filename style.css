@@ -22,8 +22,8 @@ ul { list-style: none; }
 .header {
     position:fixed;
     width: 100%;
-    padding: 18px 40px;
-    background:  rgb(19, 70, 187);
+    padding: 10px 10px;
+    background:  rgb(7, 31, 87);
     color: black;
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,7 @@ ul { list-style: none; }
 }
 
 .dropdown-content li a:hover {
-    background: linear-gradient(to top, rgb(232, 179, 44), transparent);
+    background: black;  
 }
 
 /* Toggle */
